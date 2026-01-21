@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen } from 'lucide-react';
+import { Home, BookOpen, Building2 } from 'lucide-react';
 
 export default function Navigation() {
   const location = useLocation();
@@ -41,6 +41,15 @@ export default function Navigation() {
               <BookOpen className="w-4 h-4" />
               Blog
             </Link>
+            <a
+              href="https://www.blackmore.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 font-medium text-slate-600 hover:text-blue-600 transition-colors"
+            >
+              <Building2 className="w-4 h-4" />
+              Blackmore.ai
+            </a>
           </div>
         </div>
       </div>

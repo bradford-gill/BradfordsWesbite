@@ -1,20 +1,14 @@
 [
   {
-    "title": "My Journey into Tech",
-    "date": "2024-03-10",
-    "slug": "my-journey",
-    "excerpt": "How I transitioned into software development and what I learned"
+    "title": "Noanet Iron Mill",
+    "date": "2026-01-15",
+    "slug": "noanet-iron-mill",
+    "excerpt": "A look at the Dover Iron Mill remains in Noanet Forest, Dover Ma"
   },
   {
     "title": "5 React Tips for Better Code",
     "date": "2024-02-20",
     "slug": "react-tips",
     "excerpt": "Practical tips to write cleaner and more efficient React code"
-  },
-  {
-    "title": "Getting Started with Web Development",
-    "date": "2024-01-15",
-    "slug": "getting-started",
-    "excerpt": "A beginner's guide to starting your journey in web development"
   }
 ]

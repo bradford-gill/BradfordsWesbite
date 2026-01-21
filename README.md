@@ -16,7 +16,7 @@ npm run build
 
 ## Adding Blog Posts
 
-The blog system uses markdown files stored in the `public/blog/` directory. Here's how to add a new blog post:
+The blog system uses markdown files stored in the `public/blog/` directory. The `posts.json` file is **automatically generated** from the markdown file headers.
 
 ### Step 1: Create Your Markdown File
 
@@ -54,32 +54,23 @@ const greeting = "Hello, World!";
 \`\`\`
 ```
 
-### Step 2: Update posts.json
+**Important:** The frontmatter (content between `---` markers) must include all four fields: `title`, `date`, `slug`, and `excerpt`.
 
-Add your post metadata to `public/blog/posts.json`. Posts are displayed in the order they appear in this file (newest first is recommended).
+### Step 2: Generate posts.json
 
-```json
-[
-  {
-    "title": "Your Post Title",
-    "date": "2024-01-15",
-    "slug": "your-post-slug",
-    "excerpt": "A brief description of your post"
-  },
-  {
-    "title": "Previous Post",
-    "date": "2024-01-10",
-    "slug": "previous-post",
-    "excerpt": "Another post description"
-  }
-]
+Run the generation script to automatically create `posts.json` from all markdown files:
+
+```bash
+npm run generate:posts
 ```
 
-**Important:** The `slug` in `posts.json` must match your markdown filename (without the `.md` extension).
+This will scan all `.md` files in `public/blog/`, extract their frontmatter, and generate `posts.json` sorted by date (newest first).
+
+**Note:** The build process (`npm run build`) automatically runs this script, so you don't need to run it manually before building.
 
 ### Step 3: Commit and Push
 
-Once you've created your markdown file and updated `posts.json`, commit your changes:
+Once you've created your markdown file, commit your changes:
 
 ```bash
 git add public/blog/
@@ -116,16 +107,7 @@ React is a powerful JavaScript library for building user interfaces...
 Happy coding!
 ```
 
-**Entry in posts.json:**
-
-```json
-{
-  "title": "Getting Started with React",
-  "date": "2024-03-15",
-  "slug": "getting-started-with-react",
-  "excerpt": "Learn the basics of React and start building modern web applications"
-}
-```
+After running `npm run generate:posts`, this post will automatically appear in `posts.json`.
 
 ## Project Structure
 
@@ -133,10 +115,11 @@ Happy coding!
 project/
 ├── public/
 │   └── blog/
-│       ├── posts.json          # Blog post metadata
-│       ├── getting-started.md  # Sample blog post
-│       ├── react-tips.md       # Sample blog post
-│       └── my-journey.md       # Sample blog post
+│       ├── posts.json          # Auto-generated blog post metadata
+│       ├── noanet-iron-mill.md # Sample blog post
+│       └── react-tips.md       # Sample blog post
+├── scripts/
+│   └── generate-posts.js       # Script to generate posts.json from markdown
 ├── src/
 │   ├── components/
 │   │   ├── Homepage.tsx        # Main landing page

@@ -119,12 +119,12 @@ export default function Homepage() {
         <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden">
           <img
             src="/home-page-images/top_of_blackmore.JPG"
-            alt="Top of Blackmore Mountain"
+            alt="Top of Mount Blackmore"
             className="w-full h-auto object-cover"
           />
           <div className="p-6 text-center">
             <p className="text-slate-600 italic">
-              Top of Blackmore Mountain
+              Top of Mount Blackmore outside of Bozeman, MT
             </p>
           </div>
         </div>

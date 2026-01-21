@@ -38,4 +38,4 @@ Always provide feedback to users while data is loading. A simple loading spinner
 
 ## Conclusion
 
-These tips have helped me write better React code. What are your favorite React patterns?
+These tips have helped me write better React code.
