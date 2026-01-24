@@ -24,5 +24,5 @@ COPY --from=builder /app/dist /srv
 # Copy Caddyfile
 COPY Caddyfile /etc/caddy/Caddyfile
 
-EXPOSE 80
+EXPOSE 80 443
 
