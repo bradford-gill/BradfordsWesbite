@@ -6,6 +6,10 @@ export default function Homepage() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    document.title = 'Bradford Gill - Home';
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };

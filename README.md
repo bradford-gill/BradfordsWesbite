@@ -16,7 +16,16 @@ npm run build
 
 ## Adding Blog Posts
 
-The blog system uses markdown files stored in the `public/blog/` directory. The `posts.json` file is **automatically generated** from the markdown file headers.
+The blog system supports **two types of posts**:
+
+1. **Markdown posts** - Simple, static content (stored in `public/blog/`)
+2. **React posts** - Interactive, dynamic content with full React capabilities (stored in `src/components/posts/`)
+
+The `posts.json` file is **automatically generated** from both markdown and React post files.
+
+---
+
+## Option 1: Markdown Posts (Simple Content)
 
 ### Step 1: Create Your Markdown File
 
@@ -56,33 +65,76 @@ const greeting = "Hello, World!";
 
 **Important:** The frontmatter (content between `---` markers) must include all four fields: `title`, `date`, `slug`, and `excerpt`.
 
-### Step 2: Generate posts.json
+---
 
-Run the generation script to automatically create `posts.json` from all markdown files:
+## Option 2: React Posts (Interactive Content)
+
+### Step 1: Create Your React Component
+
+Create a new `.tsx` file in the `src/components/posts/` directory.
+
+**File naming convention:** Use lowercase letters and hyphens matching your slug (e.g., `interactive-demo.tsx`)
+
+**Required format:**
+
+```tsx
+/* metadata: { "title": "Your Post Title", "date": "2026-03-18", "slug": "your-slug", "excerpt": "Brief description" } */
+
+import { useState } from "react";
+
+export default function YourPostName() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-bold text-slate-800">
+        Your Interactive Post
+      </h2>
+
+      <p className="text-slate-600">
+        You can use any React features, hooks, and components here!
+      </p>
+
+      <button
+        onClick={() => setCount(count + 1)}
+        className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+      >
+        Clicked {count} times
+      </button>
+    </div>
+  );
+}
+```
+
+**Important:**
+
+- The metadata comment must be at the very top of the file
+- The metadata must be valid JSON with all four fields: `title`, `date`, `slug`, and `excerpt`
+- Export a default React component
+- You have access to all React hooks, Tailwind CSS classes, and lucide-react icons
+
+---
+
+## Generating posts.json
+
+After creating either type of post, run:
 
 ```bash
 npm run generate:posts
 ```
 
-This will scan all `.md` files in `public/blog/`, extract their frontmatter, and generate `posts.json` sorted by date (newest first).
+This will scan:
+
+- All `.md` files in `public/blog/`
+- All `.tsx` files in `src/components/posts/`
+
+And generate `posts.json` sorted by date (newest first).
 
 **Note:** The build process (`npm run build`) automatically runs this script, so you don't need to run it manually before building.
 
-### Step 3: Commit and Push
+## Examples
 
-Once you've created your markdown file, commit your changes:
-
-```bash
-git add public/blog/
-git commit -m "Add new blog post: Your Post Title"
-git push
-```
-
-That's it! Your new blog post will be live once deployed.
-
-## Example Blog Post
-
-Here's a complete example:
+### Markdown Post Example
 
 **File:** `public/blog/getting-started-with-react.md`
 
@@ -107,7 +159,18 @@ React is a powerful JavaScript library for building user interfaces...
 Happy coding!
 ```
 
-After running `npm run generate:posts`, this post will automatically appear in `posts.json`.
+### React Post Example
+
+**File:** `src/components/posts/interactive-demo.tsx`
+
+See the included `interactive-demo.tsx` file for a complete example with:
+
+- Interactive counters and buttons
+- Dashboard-style stat cards
+- Tabbed content
+- Full React state management
+
+After running `npm run generate:posts`, both types of posts will automatically appear in `posts.json`.
 
 ## Project Structure
 
@@ -116,12 +179,14 @@ project/
 ├── public/
 │   └── blog/
 │       ├── posts.json          # Auto-generated blog post metadata
-│       ├── noanet-iron-mill.md # Sample blog post
-│       └── react-tips.md       # Sample blog post
+│       ├── noanet-iron-mill.md # Sample markdown post
+│       └── react-tips.md       # Sample markdown post
 ├── scripts/
-│   └── generate-posts.js       # Script to generate posts.json from markdown
+│   └── generate-posts.js       # Script to generate posts.json
 ├── src/
 │   ├── components/
+│   │   ├── posts/
+│   │   │   └── interactive-demo.tsx  # Sample React post
 │   │   ├── Homepage.tsx        # Main landing page
 │   │   ├── BlogList.tsx        # Blog listing page
 │   │   ├── BlogPost.tsx        # Individual blog post viewer
@@ -131,7 +196,9 @@ project/
 └── README.md                   # This file
 ```
 
-## Supported Markdown Features
+## Supported Features
+
+### Markdown Posts
 
 - Headings (h1-h6)
 - Bold and italic text
@@ -139,3 +206,12 @@ project/
 - Lists (ordered and unordered)
 - Blockquotes
 - Links
+
+### React Posts
+
+- Full React hooks (useState, useEffect, etc.)
+- All Tailwind CSS utility classes
+- Lucide React icons
+- Interactive components
+- API integrations
+- Custom styling and animations

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Calendar, ArrowLeft } from 'lucide-react';
@@ -8,6 +8,7 @@ interface PostMetadata {
   date: string;
   slug: string;
   excerpt: string;
+  type: 'markdown' | 'react';
 }
 
 export default function BlogPost() {
@@ -16,13 +17,12 @@ export default function BlogPost() {
   const [metadata, setMetadata] = useState<PostMetadata | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [ReactComponent, setReactComponent] = useState<React.ComponentType | null>(null);
 
   useEffect(() => {
-    Promise.all([
-      fetch('/blog/posts.json').then((res) => res.json()),
-      fetch(`/blog/${slug}.md`).then((res) => res.text()),
-    ])
-      .then(([posts, markdown]) => {
+    fetch('/blog/posts.json')
+      .then((res) => res.json())
+      .then((posts) => {
         const post = posts.find((p: PostMetadata) => p.slug === slug);
         if (!post) {
           setError(true);
@@ -30,13 +30,40 @@ export default function BlogPost() {
           return;
         }
 
-        const contentWithoutFrontmatter = markdown.replace(/^---[\s\S]*?---\n/, '');
         setMetadata(post);
-        setContent(contentWithoutFrontmatter);
-        setLoading(false);
+        document.title = `Bradford Gill - ${post.title}`;
+
+        // Load content based on post type
+        if (post.type === 'react') {
+          // Dynamically import the React component from src/components/posts
+          import(`./posts/${slug}.tsx`)
+            .then((module) => {
+              setReactComponent(() => module.default);
+              setLoading(false);
+            })
+            .catch((err) => {
+              console.error('Error loading React post:', err);
+              setError(true);
+              setLoading(false);
+            });
+        } else {
+          // Load markdown content
+          fetch(`/blog/${slug}.md`)
+            .then((res) => res.text())
+            .then((markdown) => {
+              const contentWithoutFrontmatter = markdown.replace(/^---[\s\S]*?---\n/, '');
+              setContent(contentWithoutFrontmatter);
+              setLoading(false);
+            })
+            .catch((err) => {
+              console.error('Error loading markdown post:', err);
+              setError(true);
+              setLoading(false);
+            });
+        }
       })
       .catch((err) => {
-        console.error('Error loading blog post:', err);
+        console.error('Error loading blog posts:', err);
         setError(true);
         setLoading(false);
       });
@@ -65,7 +92,7 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="max-w-3xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-16">
         <Link
           to="/blog"
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-8 group"
@@ -92,53 +119,57 @@ export default function BlogPost() {
           </header>
 
           <div className="prose prose-slate prose-lg max-w-none">
-            <ReactMarkdown
-              components={{
-                h1: ({ children }) => (
-                  <h1 className="text-3xl font-bold text-slate-800 mt-8 mb-4">{children}</h1>
-                ),
-                h2: ({ children }) => (
-                  <h2 className="text-2xl font-bold text-slate-800 mt-6 mb-3">{children}</h2>
-                ),
-                h3: ({ children }) => (
-                  <h3 className="text-xl font-semibold text-slate-800 mt-4 mb-2">{children}</h3>
-                ),
-                p: ({ children }) => (
-                  <p className="text-slate-600 leading-relaxed mb-4">{children}</p>
-                ),
-                ul: ({ children }) => (
-                  <ul className="list-disc list-inside space-y-2 mb-4 text-slate-600">{children}</ul>
-                ),
-                ol: ({ children }) => (
-                  <ol className="list-decimal list-inside space-y-2 mb-4 text-slate-600">{children}</ol>
-                ),
-                li: ({ children }) => (
-                  <li className="ml-4">{children}</li>
-                ),
-                blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-blue-500 pl-4 italic text-slate-600 my-4">
-                    {children}
-                  </blockquote>
-                ),
-                code: ({ children }) => (
-                  <code className="bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">
-                    {children}
-                  </code>
-                ),
-                pre: ({ children }) => (
-                  <pre className="bg-slate-800 text-slate-100 p-4 rounded-lg overflow-x-auto mb-4">
-                    {children}
-                  </pre>
-                ),
-                a: ({ href, children }) => (
-                  <a href={href} className="text-blue-600 hover:text-blue-700 underline">
-                    {children}
-                  </a>
-                ),
-              }}
-            >
-              {content}
-            </ReactMarkdown>
+            {metadata.type === 'react' && ReactComponent ? (
+              <ReactComponent />
+            ) : (
+              <ReactMarkdown
+                components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl font-bold text-slate-800 mt-8 mb-4">{children}</h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-2xl font-bold text-slate-800 mt-6 mb-3">{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-xl font-semibold text-slate-800 mt-4 mb-2">{children}</h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-slate-600 leading-relaxed mb-4">{children}</p>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-600">{children}</ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal list-inside space-y-2 mb-4 text-slate-600">{children}</ol>
+                  ),
+                  li: ({ children }) => (
+                    <li className="ml-4">{children}</li>
+                  ),
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-blue-500 pl-4 italic text-slate-600 my-4">
+                      {children}
+                    </blockquote>
+                  ),
+                  code: ({ children }) => (
+                    <code className="bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">
+                      {children}
+                    </code>
+                  ),
+                  pre: ({ children }) => (
+                    <pre className="bg-slate-800 text-slate-100 p-4 rounded-lg overflow-x-auto mb-4">
+                      {children}
+                    </pre>
+                  ),
+                  a: ({ href, children }) => (
+                    <a href={href} className="text-blue-600 hover:text-blue-700 underline">
+                      {children}
+                    </a>
+                  ),
+                }}
+              >
+                {content}
+              </ReactMarkdown>
+            )}
           </div>
         </article>
       </div>

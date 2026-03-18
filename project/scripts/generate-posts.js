@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const BLOG_DIR = path.join(__dirname, '../public/blog');
+const POSTS_DIR = path.join(__dirname, '../src/components/posts');
 const OUTPUT_FILE = path.join(BLOG_DIR, 'posts.json');
 
 /**
@@ -16,7 +17,7 @@ const OUTPUT_FILE = path.join(BLOG_DIR, 'posts.json');
 function extractFrontmatter(content) {
   const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---/;
   const match = content.match(frontmatterRegex);
-  
+
   if (!match) {
     return null;
   }
@@ -39,16 +40,49 @@ function extractFrontmatter(content) {
 }
 
 /**
- * Generate posts.json from markdown files
+ * Extract metadata from React/TSX component
+ * @param {string} content - The TSX file content
+ * @returns {object|null} - Parsed metadata object or null if invalid
+ */
+function extractTsxMetadata(content) {
+  // Look for metadata comment block at the top of the file
+  // Format: /* metadata: { title: "...", date: "...", slug: "...", excerpt: "..." } */
+  const metadataRegex = /\/\*\s*metadata:\s*({[\s\S]*?})\s*\*\//;
+  const match = content.match(metadataRegex);
+
+  if (!match) {
+    return null;
+  }
+
+  try {
+    // Parse the JSON object
+    const metadata = JSON.parse(match[1]);
+    return metadata;
+  } catch (error) {
+    console.error('Error parsing TSX metadata:', error);
+    return null;
+  }
+}
+
+/**
+ * Generate posts.json from markdown and TSX files
  */
 function generatePostsJson() {
   console.log('🔍 Scanning for markdown files in:', BLOG_DIR);
+  console.log('🔍 Scanning for React posts in:', POSTS_DIR);
 
-  // Read all files in the blog directory
-  const files = fs.readdirSync(BLOG_DIR);
-  const markdownFiles = files.filter(file => file.endsWith('.md'));
+  // Read markdown files from blog directory
+  const blogFiles = fs.readdirSync(BLOG_DIR);
+  const markdownFiles = blogFiles.filter(file => file.endsWith('.md'));
 
-  console.log(`📄 Found ${markdownFiles.length} markdown file(s)`);
+  // Read TSX files from posts directory (if it exists)
+  let tsxFiles = [];
+  if (fs.existsSync(POSTS_DIR)) {
+    const postFiles = fs.readdirSync(POSTS_DIR);
+    tsxFiles = postFiles.filter(file => file.endsWith('.tsx'));
+  }
+
+  console.log(`📄 Found ${markdownFiles.length} markdown file(s) and ${tsxFiles.length} TSX file(s)`);
 
   const posts = [];
 
@@ -76,10 +110,42 @@ function generatePostsJson() {
       title: frontmatter.title,
       date: frontmatter.date,
       slug: frontmatter.slug,
-      excerpt: frontmatter.excerpt
+      excerpt: frontmatter.excerpt,
+      type: 'markdown'
     });
 
-    console.log(`✅ Processed: ${file} -> ${frontmatter.title}`);
+    console.log(`✅ Processed (markdown): ${file} -> ${frontmatter.title}`);
+  }
+
+  // Process each TSX file
+  for (const file of tsxFiles) {
+    const filePath = path.join(POSTS_DIR, file);
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const metadata = extractTsxMetadata(content);
+
+    if (!metadata) {
+      console.warn(`⚠️  Skipping ${file}: No valid metadata found`);
+      continue;
+    }
+
+    // Validate required fields
+    const requiredFields = ['title', 'date', 'slug', 'excerpt'];
+    const missingFields = requiredFields.filter(field => !metadata[field]);
+
+    if (missingFields.length > 0) {
+      console.warn(`⚠️  Skipping ${file}: Missing required fields: ${missingFields.join(', ')}`);
+      continue;
+    }
+
+    posts.push({
+      title: metadata.title,
+      date: metadata.date,
+      slug: metadata.slug,
+      excerpt: metadata.excerpt,
+      type: 'react'
+    });
+
+    console.log(`✅ Processed (react): ${file} -> ${metadata.title}`);
   }
 
   // Sort posts by date (newest first)

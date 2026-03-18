@@ -14,6 +14,10 @@ export default function BlogList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Bradford Gill - Blog';
+  }, []);
+
+  useEffect(() => {
     fetch('/blog/posts.json')
       .then((res) => res.json())
       .then((data) => {

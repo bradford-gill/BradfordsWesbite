@@ -1,14 +1,30 @@
 [
   {
+    "title": "Interactive React Demo",
+    "date": "2026-03-18",
+    "slug": "interactive-demo",
+    "excerpt": "An example of an interactive React blog post with dashboard components",
+    "type": "react"
+  },
+  {
+    "title": "Breaking Down the 2026 WBC by Salary",
+    "date": "2026-03-18",
+    "slug": "wbc-salary-analysis",
+    "excerpt": "Venezuela won its first-ever World Baseball Classic title in 2026, beating the heavily-favored USA 3-2 in the final. The Americans had nearly $350M in combined AAV — the most expensive roster in tournament history. So how did Venezuela pull it off with $120M less in payroll?",
+    "type": "react"
+  },
+  {
     "title": "Noanet Iron Mill",
     "date": "2026-01-15",
     "slug": "noanet-iron-mill",
-    "excerpt": "A look at the Dover Iron Mill remains in Noanet Forest, Dover Ma"
+    "excerpt": "A look at the Dover Iron Mill remains in Noanet Forest, Dover Ma",
+    "type": "markdown"
   },
   {
     "title": "5 React Tips for Better Code",
     "date": "2024-02-20",
     "slug": "react-tips",
-    "excerpt": "Practical tips to write cleaner and more efficient React code"
+    "excerpt": "Practical tips to write cleaner and more efficient React code",
+    "type": "markdown"
   }
 ]
