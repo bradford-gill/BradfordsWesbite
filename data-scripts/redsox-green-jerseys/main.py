@@ -89,7 +89,8 @@ def main():
     print(f"  Total Red Sox games fetched: {len(games)}")
 
     friday_home_games = [
-        g for g in games
+        g
+        for g in games
         if is_friday_home_game(g)
         and is_game_final(g)
         and g.get("teams", {}).get("home", {}).get("score") is not None
@@ -116,28 +117,43 @@ def main():
         walkoff = detect_walkoff(linescore) if result == "W" else False
         innings_played = linescore.get("currentInning", 9)
 
-        rows.append({
-            "date": date_local,
-            "opponent": away_team,
-            "result": result,
-            "sox_score": home_score,
-            "opp_score": away_score,
-            "innings": innings_played,
-            "walkoff": walkoff,
-            "game_pk": game_pk,
-        })
+        rows.append(
+            {
+                "date": date_local,
+                "opponent": away_team,
+                "result": result,
+                "sox_score": home_score,
+                "opp_score": away_score,
+                "innings": innings_played,
+                "walkoff": walkoff,
+                "game_pk": game_pk,
+            }
+        )
 
-        print(f"  {date_local}  vs {away_team:<30} {result}  {home_score}-{away_score}  {'WALKOFF' if walkoff else ''}")
+        print(
+            f"  {date_local}  vs {away_team:<30} {result}  {home_score}-{away_score}  {'WALKOFF' if walkoff else ''}"
+        )
         time.sleep(0.1)
 
-    fieldnames = ["date", "opponent", "result", "sox_score", "opp_score", "innings", "walkoff", "game_pk"]
+    fieldnames = [
+        "date",
+        "opponent",
+        "result",
+        "sox_score",
+        "opp_score",
+        "innings",
+        "walkoff",
+        "game_pk",
+    ]
     with open(OUTPUT_CSV, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
 
     with open(METADATA_JSON, "w") as f:
-        json.dump({"last_refreshed": datetime.now(timezone.utc).strftime("%Y-%m-%d")}, f)
+        json.dump(
+            {"last_refreshed": datetime.now(timezone.utc).strftime("%Y-%m-%d")}, f
+        )
 
     total = len(rows)
     wins = sum(1 for r in rows if r["result"] == "W")

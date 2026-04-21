@@ -30,6 +30,7 @@ SOX_WALKOFFS = 6
 
 # ── schedule ──────────────────────────────────────────────────────────────────
 
+
 def fetch_season_schedule(year: int) -> list[dict]:
     """One sync call per season — returns all regular-season game stubs."""
     resp = requests.get(
@@ -62,7 +63,10 @@ def home_wins(games: list[dict]) -> list[int]:
 
 # ── async linescore fetching ──────────────────────────────────────────────────
 
-async def fetch_linescore(session: aiohttp.ClientSession, game_pk: int, sem: asyncio.Semaphore) -> tuple[int, dict]:
+
+async def fetch_linescore(
+    session: aiohttp.ClientSession, game_pk: int, sem: asyncio.Semaphore
+) -> tuple[int, dict]:
     async with sem:
         url = f"{BASE_URL}/game/{game_pk}/linescore"
         async with session.get(url) as resp:
@@ -99,15 +103,14 @@ async def count_walkoffs(game_pks: list[int]) -> int:
 
 # ── binomial probability ──────────────────────────────────────────────────────
 
+
 def prob_at_least_k(n: int, k: int, p: float) -> float:
     """P(X >= k) for X ~ Binomial(n, p)."""
-    return sum(
-        math.comb(n, i) * (p ** i) * ((1 - p) ** (n - i))
-        for i in range(k, n + 1)
-    )
+    return sum(math.comb(n, i) * (p**i) * ((1 - p) ** (n - i)) for i in range(k, n + 1))
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
+
 
 def main():
     season_rows: list[dict] = []
@@ -123,12 +126,14 @@ def main():
         wos = asyncio.run(count_walkoffs(wins))
         rate = wos / len(wins) if wins else 0
 
-        season_rows.append({
-            "season": year,
-            "home_wins": len(wins),
-            "walkoff_wins": wos,
-            "walkoff_rate": round(rate, 4),
-        })
+        season_rows.append(
+            {
+                "season": year,
+                "home_wins": len(wins),
+                "walkoff_wins": wos,
+                "walkoff_rate": round(rate, 4),
+            }
+        )
         total_home_wins += len(wins)
         total_walkoffs += wos
         print(f" {wos} walk-offs ({rate*100:.1f}%)")
@@ -140,7 +145,9 @@ def main():
     # Write season CSV
     csv_path = OUT_DIR / "historical_walkoffs.csv"
     with open(csv_path, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["season", "home_wins", "walkoff_wins", "walkoff_rate"])
+        writer = csv.DictWriter(
+            f, fieldnames=["season", "home_wins", "walkoff_wins", "walkoff_rate"]
+        )
         writer.writeheader()
         writer.writerows(season_rows)
 
@@ -166,7 +173,9 @@ def main():
     print(f"Total walk-offs:      {total_walkoffs:,}")
     print(f"Baseline rate:        {baseline_rate*100:.2f}%")
     print(f"\n─── Red Sox green jerseys ───────────────────────────")
-    print(f"Walk-offs:            {SOX_WALKOFFS}/{SOX_WINS} wins ({SOX_WALKOFFS/SOX_WINS*100:.1f}%)")
+    print(
+        f"Walk-offs:            {SOX_WALKOFFS}/{SOX_WINS} wins ({SOX_WALKOFFS/SOX_WINS*100:.1f}%)"
+    )
     print(f"Expected at baseline: {expected:.2f}")
     print(f"P(≥{SOX_WALKOFFS} walk-offs in {SOX_WINS} wins): {p_value*100:.4f}%")
     print(f"\nCSV → {csv_path}")

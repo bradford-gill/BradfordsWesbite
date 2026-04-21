@@ -8,3 +8,8 @@ dependencies = [
     "aiohttp>=3.13.5",
     "requests>=2.33.1",
 ]
+
+[dependency-groups]
+dev = [
+    "black>=26.3.1",
+]
