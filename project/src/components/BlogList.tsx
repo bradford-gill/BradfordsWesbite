@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Calendar, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Calendar, ArrowRight } from "lucide-react";
 
 interface BlogPost {
   title: string;
@@ -14,18 +14,18 @@ export default function BlogList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = 'Bradford Gill - Blog';
+    document.title = "Bradford Gill - Blog";
   }, []);
 
   useEffect(() => {
-    fetch('/blog/posts.json')
+    fetch("/blog/posts.json")
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error('Error loading blog posts:', err);
+        console.error("Error loading blog posts:", err);
         setLoading(false);
       });
   }, []);
@@ -63,14 +63,16 @@ export default function BlogList() {
                   <div className="flex items-center gap-2 text-slate-500 mb-4">
                     <Calendar className="w-4 h-4" />
                     <span className="text-sm">
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
                       })}
                     </span>
                   </div>
-                  <p className="text-slate-600 leading-relaxed">{post.excerpt}</p>
+                  <p className="text-slate-600 leading-relaxed">
+                    {post.excerpt}
+                  </p>
                 </div>
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
@@ -84,7 +86,9 @@ export default function BlogList() {
 
         {posts.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-xl text-slate-500">No blog posts yet. Check back soon!</p>
+            <p className="text-xl text-slate-500">
+              No blog posts yet. Check back soon!
+            </p>
           </div>
         )}
       </div>

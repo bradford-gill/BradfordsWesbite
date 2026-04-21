@@ -1,26 +1,27 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
-import { Calendar, ArrowLeft } from 'lucide-react';
+import { useEffect, useState, lazy, Suspense } from "react";
+import { useParams, Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import { Calendar, ArrowLeft } from "lucide-react";
 
 interface PostMetadata {
   title: string;
   date: string;
   slug: string;
   excerpt: string;
-  type: 'markdown' | 'react';
+  type: "markdown" | "react";
 }
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [metadata, setMetadata] = useState<PostMetadata | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [ReactComponent, setReactComponent] = useState<React.ComponentType | null>(null);
+  const [ReactComponent, setReactComponent] =
+    useState<React.ComponentType | null>(null);
 
   useEffect(() => {
-    fetch('/blog/posts.json')
+    fetch("/blog/posts.json")
       .then((res) => res.json())
       .then((posts) => {
         const post = posts.find((p: PostMetadata) => p.slug === slug);
@@ -34,7 +35,7 @@ export default function BlogPost() {
         document.title = `Bradford Gill - ${post.title}`;
 
         // Load content based on post type
-        if (post.type === 'react') {
+        if (post.type === "react") {
           // Dynamically import the React component from src/components/posts
           import(`./posts/${slug}.tsx`)
             .then((module) => {
@@ -42,7 +43,7 @@ export default function BlogPost() {
               setLoading(false);
             })
             .catch((err) => {
-              console.error('Error loading React post:', err);
+              console.error("Error loading React post:", err);
               setError(true);
               setLoading(false);
             });
@@ -51,19 +52,22 @@ export default function BlogPost() {
           fetch(`/blog/${slug}.md`)
             .then((res) => res.text())
             .then((markdown) => {
-              const contentWithoutFrontmatter = markdown.replace(/^---[\s\S]*?---\n/, '');
+              const contentWithoutFrontmatter = markdown.replace(
+                /^---[\s\S]*?---\n/,
+                "",
+              );
               setContent(contentWithoutFrontmatter);
               setLoading(false);
             })
             .catch((err) => {
-              console.error('Error loading markdown post:', err);
+              console.error("Error loading markdown post:", err);
               setError(true);
               setLoading(false);
             });
         }
       })
       .catch((err) => {
-        console.error('Error loading blog posts:', err);
+        console.error("Error loading blog posts:", err);
         setError(true);
         setLoading(false);
       });
@@ -81,7 +85,9 @@ export default function BlogPost() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-800 mb-4">Post Not Found</h1>
+          <h1 className="text-4xl font-bold text-slate-800 mb-4">
+            Post Not Found
+          </h1>
           <Link to="/blog" className="text-blue-600 hover:text-blue-700">
             Back to Blog
           </Link>
@@ -109,42 +115,52 @@ export default function BlogPost() {
             <div className="flex items-center gap-2 text-slate-500">
               <Calendar className="w-4 h-4" />
               <time className="text-sm">
-                {new Date(metadata.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
+                {new Date(metadata.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </time>
             </div>
           </header>
 
           <div className="prose prose-slate prose-lg max-w-none">
-            {metadata.type === 'react' && ReactComponent ? (
+            {metadata.type === "react" && ReactComponent ? (
               <ReactComponent />
             ) : (
               <ReactMarkdown
                 components={{
                   h1: ({ children }) => (
-                    <h1 className="text-3xl font-bold text-slate-800 mt-8 mb-4">{children}</h1>
+                    <h1 className="text-3xl font-bold text-slate-800 mt-8 mb-4">
+                      {children}
+                    </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="text-2xl font-bold text-slate-800 mt-6 mb-3">{children}</h2>
+                    <h2 className="text-2xl font-bold text-slate-800 mt-6 mb-3">
+                      {children}
+                    </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-xl font-semibold text-slate-800 mt-4 mb-2">{children}</h3>
+                    <h3 className="text-xl font-semibold text-slate-800 mt-4 mb-2">
+                      {children}
+                    </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-slate-600 leading-relaxed mb-4">{children}</p>
+                    <p className="text-slate-600 leading-relaxed mb-4">
+                      {children}
+                    </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-600">{children}</ul>
+                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-600">
+                      {children}
+                    </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside space-y-2 mb-4 text-slate-600">{children}</ol>
+                    <ol className="list-decimal list-inside space-y-2 mb-4 text-slate-600">
+                      {children}
+                    </ol>
                   ),
-                  li: ({ children }) => (
-                    <li className="ml-4">{children}</li>
-                  ),
+                  li: ({ children }) => <li className="ml-4">{children}</li>,
                   blockquote: ({ children }) => (
                     <blockquote className="border-l-4 border-blue-500 pl-4 italic text-slate-600 my-4">
                       {children}
@@ -161,7 +177,10 @@ export default function BlogPost() {
                     </pre>
                   ),
                   a: ({ href, children }) => (
-                    <a href={href} className="text-blue-600 hover:text-blue-700 underline">
+                    <a
+                      href={href}
+                      className="text-blue-600 hover:text-blue-700 underline"
+                    >
                       {children}
                     </a>
                   ),

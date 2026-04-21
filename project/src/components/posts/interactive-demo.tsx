@@ -1,17 +1,37 @@
 /* metadata: { "title": "Interactive React Demo", "date": "2026-03-18", "slug": "interactive-demo", "excerpt": "An example of an interactive React blog post with dashboard components" } */
 
-import { useState } from 'react';
-import { TrendingUp, Users, DollarSign, Activity } from 'lucide-react';
+import { useState } from "react";
+import { TrendingUp, Users, DollarSign, Activity } from "lucide-react";
 
 export default function InteractiveDemo() {
   const [count, setCount] = useState(0);
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
 
   const stats = [
-    { label: 'Total Users', value: '12,345', icon: Users, color: 'text-blue-600' },
-    { label: 'Revenue', value: '$54,321', icon: DollarSign, color: 'text-green-600' },
-    { label: 'Growth', value: '+23%', icon: TrendingUp, color: 'text-purple-600' },
-    { label: 'Active Now', value: '1,234', icon: Activity, color: 'text-orange-600' },
+    {
+      label: "Total Users",
+      value: "12,345",
+      icon: Users,
+      color: "text-blue-600",
+    },
+    {
+      label: "Revenue",
+      value: "$54,321",
+      icon: DollarSign,
+      color: "text-green-600",
+    },
+    {
+      label: "Growth",
+      value: "+23%",
+      icon: TrendingUp,
+      color: "text-purple-600",
+    },
+    {
+      label: "Active Now",
+      value: "1,234",
+      icon: Activity,
+      color: "text-orange-600",
+    },
   ];
 
   return (
@@ -21,9 +41,10 @@ export default function InteractiveDemo() {
           Welcome to Interactive React Posts!
         </h2>
         <p className="text-slate-600 leading-relaxed mb-4">
-          This is an example of a React-based blog post. Unlike markdown posts, you can use
-          full React components, state management, and interactive elements. This makes it
-          perfect for creating dashboard-style content, interactive tutorials, or data visualizations.
+          This is an example of a React-based blog post. Unlike markdown posts,
+          you can use full React components, state management, and interactive
+          elements. This makes it perfect for creating dashboard-style content,
+          interactive tutorials, or data visualizations.
         </p>
       </section>
 
@@ -87,14 +108,14 @@ export default function InteractiveDemo() {
         </h3>
         <div className="border border-slate-200 rounded-xl overflow-hidden">
           <div className="flex border-b border-slate-200">
-            {['overview', 'analytics', 'settings'].map((tab) => (
+            {["overview", "analytics", "settings"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 px-6 py-3 font-medium capitalize transition-colors ${
                   activeTab === tab
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-50 text-slate-600 hover:bg-slate-100"
                 }`}
               >
                 {tab}
@@ -102,29 +123,30 @@ export default function InteractiveDemo() {
             ))}
           </div>
           <div className="p-6 bg-white">
-            {activeTab === 'overview' && (
+            {activeTab === "overview" && (
               <div>
                 <h4 className="font-semibold text-slate-800 mb-2">Overview</h4>
                 <p className="text-slate-600">
-                  This is the overview tab. You can display any React content here,
-                  including charts, tables, or custom components.
+                  This is the overview tab. You can display any React content
+                  here, including charts, tables, or custom components.
                 </p>
               </div>
             )}
-            {activeTab === 'analytics' && (
+            {activeTab === "analytics" && (
               <div>
                 <h4 className="font-semibold text-slate-800 mb-2">Analytics</h4>
                 <p className="text-slate-600">
-                  Analytics data would go here. You could integrate with charting
-                  libraries like Recharts or Chart.js.
+                  Analytics data would go here. You could integrate with
+                  charting libraries like Recharts or Chart.js.
                 </p>
               </div>
             )}
-            {activeTab === 'settings' && (
+            {activeTab === "settings" && (
               <div>
                 <h4 className="font-semibold text-slate-800 mb-2">Settings</h4>
                 <p className="text-slate-600">
-                  Configuration options and settings would be displayed in this tab.
+                  Configuration options and settings would be displayed in this
+                  tab.
                 </p>
               </div>
             )}
@@ -137,10 +159,17 @@ export default function InteractiveDemo() {
           💡 How to Create React Posts
         </h3>
         <div className="text-slate-600 space-y-2">
-          <p>1. Create a <code className="bg-white px-2 py-1 rounded text-sm">.tsx</code> file in <code className="bg-white px-2 py-1 rounded text-sm">src/components/posts/</code></p>
+          <p>
+            1. Create a{" "}
+            <code className="bg-white px-2 py-1 rounded text-sm">.tsx</code>{" "}
+            file in{" "}
+            <code className="bg-white px-2 py-1 rounded text-sm">
+              src/components/posts/
+            </code>
+          </p>
           <p>2. Add metadata at the top in a comment block:</p>
           <pre className="bg-slate-800 text-slate-100 p-4 rounded-lg overflow-x-auto my-2 text-sm">
-{`/* metadata: {
+            {`/* metadata: {
   "title": "Your Title",
   "date": "2026-03-18",
   "slug": "your-slug",
@@ -148,7 +177,12 @@ export default function InteractiveDemo() {
 } */`}
           </pre>
           <p>3. Export a default React component</p>
-          <p>4. Run <code className="bg-white px-2 py-1 rounded text-sm">npm run generate:posts</code></p>
+          <p>
+            4. Run{" "}
+            <code className="bg-white px-2 py-1 rounded text-sm">
+              npm run generate:posts
+            </code>
+          </p>
           <p>5. Your interactive post is ready! 🎉</p>
         </div>
       </section>
@@ -168,7 +202,9 @@ export default function InteractiveDemo() {
           </li>
           <li className="flex items-start gap-3">
             <span className="text-green-600 font-bold">✓</span>
-            <span>Create interactive dashboards, calculators, and visualizations</span>
+            <span>
+              Create interactive dashboards, calculators, and visualizations
+            </span>
           </li>
           <li className="flex items-start gap-3">
             <span className="text-green-600 font-bold">✓</span>
@@ -183,4 +219,3 @@ export default function InteractiveDemo() {
     </div>
   );
 }
-
