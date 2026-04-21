@@ -3,5 +3,13 @@
 	encode gzip
 	try_files {path} /index.html
 	file_server
+
+	# Never cache HTML so browsers always fetch the latest index.html on deploy.
+	# JS/CSS assets are safe to cache forever because Vite hashes their filenames.
+	@html {
+		path *.html
+		path /
+	}
+	header @html Cache-Control "no-cache, no-store, must-revalidate"
 }
 
