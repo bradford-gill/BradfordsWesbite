@@ -23,9 +23,20 @@ SEASONS = list(range(2000, 2025))
 CONCURRENCY = 30
 OUT_DIR = Path(__file__).parent
 
-# Red Sox green-jersey Friday stats for the binomial test
-SOX_WINS = 11
-SOX_WALKOFFS = 6
+GAMES_CSV = Path(__file__).parent / "games.csv"
+
+
+def read_sox_stats() -> tuple[int, int]:
+    """Read sox_wins and sox_walkoffs directly from the generated games CSV."""
+    wins = 0
+    walkoffs = 0
+    with open(GAMES_CSV, newline="") as f:
+        for row in csv.DictReader(f):
+            if row["result"] == "W":
+                wins += 1
+                if row["walkoff"].strip() == "True":
+                    walkoffs += 1
+    return wins, walkoffs
 
 
 # ── schedule ──────────────────────────────────────────────────────────────────
@@ -113,6 +124,11 @@ def prob_at_least_k(n: int, k: int, p: float) -> float:
 
 
 def main():
+    SOX_WINS, SOX_WALKOFFS = read_sox_stats()
+    print(
+        f"Sox green jersey stats from CSV: {SOX_WALKOFFS} walkoffs in {SOX_WINS} wins"
+    )
+
     season_rows: list[dict] = []
     total_home_wins = 0
     total_walkoffs = 0
@@ -182,5 +198,37 @@ def main():
     print(f"JSON → {json_path}")
 
 
+def quick_update():
+    """Update only the Sox stats in baseline_stats.json without refetching history."""
+    json_path = OUT_DIR / "baseline_stats.json"
+    if not json_path.exists():
+        print("baseline_stats.json not found — run without --quick first.")
+        return
+    with open(json_path) as f:
+        stats = json.load(f)
+    baseline_rate = stats["baseline_walkoff_rate"]
+    sox_wins, sox_walkoffs = read_sox_stats()
+    expected = sox_wins * baseline_rate
+    p_value = prob_at_least_k(sox_wins, sox_walkoffs, baseline_rate)
+    stats.update(
+        {
+            "sox_wins": sox_wins,
+            "sox_walkoffs": sox_walkoffs,
+            "sox_walkoff_rate": round(sox_walkoffs / sox_wins, 4),
+            "expected_walkoffs": round(expected, 2),
+            "prob_at_least_sox_walkoffs": round(p_value, 6),
+        }
+    )
+    with open(json_path, "w") as f:
+        json.dump(stats, f, indent=2)
+    print(f"Updated baseline_stats.json: {sox_walkoffs} walkoffs in {sox_wins} wins")
+    print(f"P(≥{sox_walkoffs} in {sox_wins}): {p_value*100:.4f}%")
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+
+    if "--quick" in sys.argv:
+        quick_update()
+    else:
+        main()

@@ -3,9 +3,9 @@
   "total_home_wins": 31828,
   "total_walkoff_wins": 5242,
   "baseline_walkoff_rate": 0.1647,
-  "sox_wins": 11,
-  "sox_walkoffs": 6,
-  "sox_walkoff_rate": 0.5455,
-  "expected_walkoffs": 1.81,
-  "prob_at_least_sox_walkoffs": 0.004333
+  "sox_wins": 7,
+  "sox_walkoffs": 7,
+  "sox_walkoff_rate": 1.0,
+  "expected_walkoffs": 1.15,
+  "prob_at_least_sox_walkoffs": 3e-06
 }

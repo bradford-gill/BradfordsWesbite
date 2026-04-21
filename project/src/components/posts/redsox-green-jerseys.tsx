@@ -24,6 +24,20 @@ interface BaselineStats {
   prob_at_least_sox_walkoffs: number;
 }
 
+function fmtProb(p: number): string {
+  const pct = p * 100;
+  if (pct >= 0.1) return pct.toFixed(2);
+  if (pct >= 0.001) return pct.toFixed(4);
+  return pct.toFixed(6);
+}
+
+function fmtFraction(p: number): string {
+  const denom = Math.round(1 / p);
+  if (denom >= 1_000_000) return `1 in ${(denom / 1_000_000).toFixed(1)}M`;
+  if (denom >= 1_000) return `1 in ${denom.toLocaleString()}`;
+  return `1 in ${denom}`;
+}
+
 const GREEN = "#1a5c2e";
 const GREEN_DARK = "#0d3318";
 const GREEN_LIGHT = "#e8f5ed";
@@ -160,7 +174,7 @@ export default function RedsoxGreenJerseys() {
             value: `${(walkoffOfWins * 100).toFixed(1)}%`,
             sub: `${walkoffs} of ${wins} wins`,
           },
-          { label: "Games", value: `${total}`, sub: `Fri home 2025–26` },
+          { label: "Games", value: `${total}`, sub: `Green games 2025–26` },
         ].map(({ label, value, sub }) => (
           <div
             key={label}
@@ -236,8 +250,8 @@ export default function RedsoxGreenJerseys() {
               },
               {
                 label: "Probability by chance",
-                value: `${(stats.prob_at_least_sox_walkoffs * 100).toFixed(2)}%`,
-                sub: `P(≥${stats.sox_walkoffs} walk-offs in ${stats.sox_wins} wins) under MLB baseline`,
+                value: fmtFraction(stats.prob_at_least_sox_walkoffs),
+                sub: `${fmtProb(stats.prob_at_least_sox_walkoffs)}% — ≈ odds of a lightning strike`,
               },
             ].map(({ label, value, sub }) => (
               <div
@@ -297,10 +311,8 @@ export default function RedsoxGreenJerseys() {
             probability as any MLB home win from 2000–2024, the probability of
             seeing {stats.sox_walkoffs} or more walk-offs in {stats.sox_wins}{" "}
             wins is{" "}
-            <strong>
-              {(stats.prob_at_least_sox_walkoffs * 100).toFixed(2)}%
-            </strong>
-            . The observed rate is{" "}
+            <strong>{fmtProb(stats.prob_at_least_sox_walkoffs)}%</strong>. The
+            observed rate is{" "}
             <strong>
               {(stats.sox_walkoff_rate / stats.baseline_walkoff_rate).toFixed(
                 1,
@@ -310,7 +322,7 @@ export default function RedsoxGreenJerseys() {
             the historical average.
           </p>
 
-          <Narrative stats={stats} />
+          <Narrative stats={stats} total={total} />
         </div>
       )}
 
@@ -422,17 +434,17 @@ export default function RedsoxGreenJerseys() {
           </table>
         </div>
         <p style={{ fontSize: "0.72rem", color: "#888", marginTop: "0.5rem" }}>
-          Data via MLB Stats API. Green jersey Fridays = all Red Sox
-          regular-season home games on Fridays, 2025–2026.
+          Data via MLB Stats API. 2025 dates verified from game footage; 2026
+          Friday home games assumed green unless confirmed otherwise.
         </p>
       </div>
 
-      <Assumptions />
+      {stats && <Assumptions stats={stats} total={total} />}
     </div>
   );
 }
 
-function Narrative({ stats }: { stats: BaselineStats }) {
+function Narrative({ stats, total }: { stats: BaselineStats; total: number }) {
   const prose: React.CSSProperties = {
     fontSize: "1rem",
     lineHeight: 1.75,
@@ -457,45 +469,61 @@ function Narrative({ stats }: { stats: BaselineStats }) {
       </p>
       <p style={prose}>
         But how improbable is it, really? That question sent me to the MLB Stats
-        API. I pulled every Red Sox regular-season home game played on a Friday
-        since 2025 (the green jersey era) and checked each one for a walk-off
-        using the game's linescore: if the home team was still batting when the
-        final out was recorded, it counts. Sixteen games in, the Sox are{" "}
+        API. I pulled every verified Red Sox Fenway Greens game since the
+        jerseys debuted in May 2025 and checked each one for a walk-off using
+        the game's linescore: if the home team was still batting when the final
+        out was recorded, it counts. {total} games in, the Sox are{" "}
         {stats.sox_walkoffs} for {stats.sox_wins} on walk-off wins in games they
         won. Over half their victories in green have ended in walk-offs.
       </p>
       <p style={prose}>
         To put that in context, I ran the same walk-off detection across every
-        MLB home win from 2000 through 2024,{" "}
-        {stats.total_home_wins.toLocaleString()} games. League-wide, about{" "}
-        {(stats.baseline_walkoff_rate * 100).toFixed(1)}% of home wins end in a
-        walk-off. At that rate, you'd expect roughly {stats.expected_walkoffs}{" "}
-        walk-off wins in {stats.sox_wins} chances. The Sox have{" "}
-        {stats.sox_walkoffs}. The gap between expected and observed isn't close.
+        MLB home win from 2000 through 2024 —{" "}
+        {stats.total_home_wins.toLocaleString()} games across 25 seasons.
+        League-wide, about {(stats.baseline_walkoff_rate * 100).toFixed(1)}% of
+        home wins end in a walk-off. At that rate, you'd expect roughly{" "}
+        <strong>{stats.expected_walkoffs}</strong> walk-off wins in{" "}
+        {stats.sox_wins} chances. The Sox have{" "}
+        <strong>{stats.sox_walkoffs}</strong>. Every single win has been a
+        walk-off. Not most of them. All of them.
       </p>
       <p style={{ ...prose, marginBottom: 0 }}>
-        A simple binomial test asks: if each green jersey win had only that{" "}
-        {(stats.baseline_walkoff_rate * 100).toFixed(1)}% baseline chance of
-        ending in a walk-off, what's the probability of seeing{" "}
-        {stats.sox_walkoffs} or more in {stats.sox_wins} tries? The answer is{" "}
-        <strong>{(stats.prob_at_least_sox_walkoffs * 100).toFixed(2)}%</strong>.
-        The observed walk-off rate is{" "}
+        A binomial test puts a number on it: if each green jersey win had only
+        the baseline {(stats.baseline_walkoff_rate * 100).toFixed(1)}% chance of
+        ending in a walk-off, the probability of seeing {stats.sox_walkoffs}{" "}
+        walk-offs in {stats.sox_wins} wins is{" "}
+        <strong>{fmtProb(stats.prob_at_least_sox_walkoffs)}%</strong> — or{" "}
+        <strong>{fmtFraction(stats.prob_at_least_sox_walkoffs)}</strong>. For
+        reference, the odds of being struck by lightning in a given year in the
+        US are roughly 1 in 500,000. This is in that territory. A random fan
+        picked off the street is about as likely to get struck by lightning
+        today as this walk-off streak is to have happened by chance. The
+        observed walk-off rate is{" "}
         {(stats.sox_walkoff_rate / stats.baseline_walkoff_rate).toFixed(1)}x the
-        historical average. Small sample, only {stats.sox_wins} wins, but
-        improbable by any reasonable measure. The jerseys might just be magic.
+        historical average. The jerseys aren't just lucky. They're statistically
+        absurd.
       </p>
     </div>
   );
 }
 
-function Assumptions() {
+function Assumptions({
+  stats,
+  total,
+}: {
+  stats: BaselineStats;
+  total: number;
+}) {
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => setOpen((v) => !v), []);
 
+  const pPct = fmtProb(stats.prob_at_least_sox_walkoffs);
+  const basePct = (stats.baseline_walkoff_rate * 100).toFixed(1);
+
   const items = [
     {
-      label: 'What counts as a "green jersey Friday"?',
-      body: "Every Red Sox regular-season home game played on a Friday, 2025 to 2026. The team is assumed to wear green jerseys for all Friday home dates at Fenway. Individual game promotions are not verified against MLB marketing data.",
+      label: 'What counts as a "green jersey game"?',
+      body: "All 2025 dates are verified from game footage and reporting — the Fenway Greens were not worn every Friday in 2025 (e.g., the May 23 game was rained out and the jerseys were worn on Saturday May 24 instead; April 3, 2026 was a Friday home game where the greens were not worn). For 2026, Friday home games are assumed to be green jersey games unless confirmed otherwise. As the 2026 season continues, confirmed non-green Fridays are excluded.",
     },
     {
       label: "How is a walk-off detected?",
@@ -503,19 +531,19 @@ function Assumptions() {
     },
     {
       label: "What is the baseline and how is it calculated?",
-      body: "All MLB regular-season games 2000–2024 (31,828 home wins across 25 seasons). For each home win, the same linescore walk-off detection is applied. The resulting 16.5% baseline is the fraction of home wins that ended in walk-offs league-wide over that period.",
+      body: `All MLB regular-season games 2000–2024 (${stats.total_home_wins.toLocaleString()} home wins across 25 seasons). For each home win, the same linescore walk-off detection is applied. The resulting ${basePct}% baseline is the fraction of home wins that ended in walk-offs league-wide over that period.`,
     },
     {
       label: "How is the probability calculated?",
-      body: `Binomial test: P(X ≥ 6 | n=11, p=0.1647) using the exact binomial formula. This answers: if every green jersey win had only the league-average 16.5% chance of being a walk-off, how often would we see 6 or more walk-offs in 11 wins? Answer: 0.43% of the time.`,
+      body: `Binomial test: P(X ≥ ${stats.sox_walkoffs} | n=${stats.sox_wins}, p=${stats.baseline_walkoff_rate}) using the exact binomial formula. This answers: if every green jersey win had only the league-average ${basePct}% chance of being a walk-off, how often would we see ${stats.sox_walkoffs} or more walk-offs in ${stats.sox_wins} wins? Answer: ${pPct}% of the time.`,
     },
     {
       label: "What is excluded?",
-      body: "Postponed or suspended games (null score in the API), spring training, and postseason games. A split-doubleheader makeup game on 5/23/2025 with a null score was excluded.",
+      body: "Postponed or suspended games (null score in the API), spring training, and postseason games.",
     },
     {
       label: "Sample size caveat",
-      body: "16 games is a small sample. The 0.43% probability is suggestive but not conclusive. It will shift as more green jersey Fridays are played in 2026.",
+      body: `${total} games is a small sample. The ${pPct}% probability is suggestive but not conclusive. It will shift as more green jersey games are played in 2026.`,
     },
   ];
 

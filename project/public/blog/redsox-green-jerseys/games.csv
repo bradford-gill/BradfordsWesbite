@@ -1,17 +1,13 @@
 date,opponent,result,sox_score,opp_score,innings,walkoff,game_pk
-2025-04-04,St. Louis Cardinals,W,13,9,9,False,778463
-2025-04-18,Chicago White Sox,W,10,3,9,False,778275
-2025-05-02,Minnesota Twins,W,6,1,9,False,778089
 2025-05-16,Atlanta Braves,L,2,4,9,False,777908
-2025-05-23,Baltimore Orioles,W,19,5,9,False,777815
+2025-05-24,Baltimore Orioles,W,6,5,10,True,777809
+2025-05-24,Baltimore Orioles,L,1,2,9,False,777790
 2025-06-13,New York Yankees,W,2,1,10,True,777537
 2025-06-27,Toronto Blue Jays,L,0,9,9,False,777345
 2025-07-11,Tampa Bay Rays,W,5,4,9,True,777155
-2025-07-25,Los Angeles Dodgers,L,2,5,9,False,777012
 2025-08-01,Houston Astros,W,2,1,10,True,776922
 2025-08-15,Miami Marlins,W,2,1,9,True,776741
 2025-08-29,Pittsburgh Pirates,L,2,4,9,False,776549
 2025-09-12,New York Yankees,L,1,4,9,False,776363
 2025-09-26,Detroit Tigers,W,4,3,9,True,776181
-2026-04-03,San Diego Padres,W,5,2,9,False,824786
 2026-04-17,Detroit Tigers,W,1,0,10,True,824778

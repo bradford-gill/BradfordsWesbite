@@ -1,6 +1,9 @@
 """
-Fetch Red Sox Friday home games (green jersey Fridays) from the MLB Stats API
-for 2025 and 2026, detect walk-offs, and write results to CSV.
+Fetch Red Sox Fenway Greens games from the MLB Stats API, detect walk-offs,
+and write results to CSV.
+
+2025 dates are verified from game footage/reporting and hardcoded.
+2026 dates default to Friday home games minus confirmed non-green dates.
 """
 
 import csv
@@ -15,6 +18,26 @@ BASE_URL = "https://statsapi.mlb.com/api/v1"
 RED_SOX_ID = 111
 OUTPUT_CSV = Path(__file__).parent / "games.csv"
 METADATA_JSON = Path(__file__).parent / "metadata.json"
+
+# All verified 2025 green jersey dates (confirmed from game footage and reporting).
+# Note: 2025-05-24 was a Saturday makeup game — the 2025-05-23 Friday was rained out.
+CONFIRMED_GREEN_2025 = {
+    "2025-05-16",
+    "2025-05-24",
+    "2025-06-13",
+    "2025-06-27",
+    "2025-07-11",
+    "2025-08-01",
+    "2025-08-15",
+    "2025-08-29",
+    "2025-09-12",
+    "2025-09-26",
+}
+
+# 2026 Friday home games confirmed NOT to be green jersey days.
+CONFIRMED_NOT_GREEN_2026 = {
+    "2026-04-03",
+}
 
 
 def get_schedule(start_date: str, end_date: str) -> list[dict]:
@@ -40,15 +63,22 @@ def is_friday_home_game(game: dict) -> bool:
     game_date_str = game.get("gameDate", "")
     if not game_date_str:
         return False
-    # Game times are UTC; subtract 4h (EDT) to get local date for day-of-week check
     game_dt = datetime.strptime(game_date_str, "%Y-%m-%dT%H:%M:%SZ").replace(
         tzinfo=timezone.utc
     )
     local_dt = game_dt - timedelta(hours=4)
-    if local_dt.weekday() != 4:  # 4 = Friday
+    if local_dt.weekday() != 4:
         return False
     home_team_id = game.get("teams", {}).get("home", {}).get("team", {}).get("id")
     return home_team_id == RED_SOX_ID
+
+
+def is_green_jersey_game(game: dict, date_local: str) -> bool:
+    year = date_local[:4]
+    if year == "2025":
+        return date_local in CONFIRMED_GREEN_2025
+    # 2026+: assume Friday home games are green unless confirmed otherwise
+    return is_friday_home_game(game) and date_local not in CONFIRMED_NOT_GREEN_2026
 
 
 def is_game_final(game: dict) -> bool:
@@ -80,7 +110,6 @@ def detect_walkoff(linescore: dict) -> bool:
 
 def main():
     today = datetime.now().strftime("%Y-%m-%d")
-    # MLB Stats API paginates by season, so query each season separately
     print(f"Fetching 2025 season…")
     games_2025 = get_schedule("2025-03-27", "2025-11-30")
     print(f"Fetching 2026 season through {today}…")
@@ -88,24 +117,28 @@ def main():
     games = games_2025 + games_2026
     print(f"  Total Red Sox games fetched: {len(games)}")
 
-    friday_home_games = [
-        g
-        for g in games
-        if is_friday_home_game(g)
-        and is_game_final(g)
-        and g.get("teams", {}).get("home", {}).get("score") is not None
-        and g.get("teams", {}).get("away", {}).get("score") is not None
-    ]
-    print(f"  Friday home games (final):   {len(friday_home_games)}")
-
-    rows = []
-    for game in friday_home_games:
-        game_pk = game["gamePk"]
-        game_date_str = game["gameDate"]
+    green_games = []
+    for g in games:
+        game_date_str = g.get("gameDate", "")
+        if not game_date_str:
+            continue
         game_dt = datetime.strptime(game_date_str, "%Y-%m-%dT%H:%M:%SZ").replace(
             tzinfo=timezone.utc
         )
         date_local = (game_dt - timedelta(hours=4)).strftime("%Y-%m-%d")
+        if (
+            is_green_jersey_game(g, date_local)
+            and is_game_final(g)
+            and g.get("teams", {}).get("home", {}).get("score") is not None
+            and g.get("teams", {}).get("away", {}).get("score") is not None
+        ):
+            green_games.append((g, date_local))
+
+    print(f"  Green jersey games (final):  {len(green_games)}")
+
+    rows = []
+    for game, date_local in green_games:
+        game_pk = game["gamePk"]
 
         home = game["teams"]["home"]
         away_team = game["teams"]["away"]["team"]["name"]
