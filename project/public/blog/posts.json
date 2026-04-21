@@ -1,5 +1,12 @@
 [
   {
+    "title": "The Red Sox Green Jersey Effect",
+    "date": "2026-04-21",
+    "slug": "redsox-green-jerseys",
+    "excerpt": "Red Sox Friday home games at Fenway in green jerseys: the record, the walk-offs, and how unlikely it all is.",
+    "type": "react"
+  },
+  {
     "title": "Interactive React Demo",
     "date": "2026-03-18",
     "slug": "interactive-demo",
@@ -10,7 +17,7 @@
     "title": "Breaking Down the 2026 WBC by Salary",
     "date": "2026-03-18",
     "slug": "wbc-salary-analysis",
-    "excerpt": "Venezuela won its first-ever World Baseball Classic title in 2026, beating the heavily-favored USA 3-2 in the final. The Americans had nearly $350M in combined AAV — the most expensive roster in tournament history. So how did Venezuela pull it off with $120M less in payroll?",
+    "excerpt": "A look at the top four WBC teams by MLB salary",
     "type": "react"
   },
   {
