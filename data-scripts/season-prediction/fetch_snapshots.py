@@ -92,9 +92,9 @@ def extract_teams(records: list[dict]) -> dict[int, dict]:
                 "runs_allowed": ra,
                 "run_diff": rs - ra,
                 "run_diff_per_game": round((rs - ra) / games, 4) if games > 0 else None,
-                "pythagorean_pct": round(p, 4)
-                if (p := pythagorean_pct(rs, ra)) is not None
-                else None,
+                "pythagorean_pct": (
+                    round(p, 4) if (p := pythagorean_pct(rs, ra)) is not None else None
+                ),
             }
     return teams
 
@@ -164,9 +164,9 @@ def main() -> None:
                         "remaining_wins": rem_wins,
                         "remaining_losses": rem_losses,
                         "remaining_games": rem_games,
-                        "remaining_win_pct": round(rem_wins / rem_games, 4)
-                        if rem_games > 0
-                        else None,
+                        "remaining_win_pct": (
+                            round(rem_wins / rem_games, 4) if rem_games > 0 else None
+                        ),
                     }
                 )
 

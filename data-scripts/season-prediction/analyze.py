@@ -68,11 +68,24 @@ def linear_rmse(xs: list[float], ys: list[float]) -> float:
 def load_rows() -> list[dict]:
     rows = []
     numeric = {
-        "year", "wins", "losses", "games_played", "win_pct",
-        "runs_scored", "runs_allowed", "run_diff", "run_diff_per_game",
-        "pythagorean_pct", "final_wins", "final_losses", "final_games",
-        "final_win_pct", "remaining_wins", "remaining_losses",
-        "remaining_games", "remaining_win_pct",
+        "year",
+        "wins",
+        "losses",
+        "games_played",
+        "win_pct",
+        "runs_scored",
+        "runs_allowed",
+        "run_diff",
+        "run_diff_per_game",
+        "pythagorean_pct",
+        "final_wins",
+        "final_losses",
+        "final_games",
+        "final_win_pct",
+        "remaining_wins",
+        "remaining_losses",
+        "remaining_games",
+        "remaining_win_pct",
     }
     with open(DATA_DIR / "snapshots.csv") as f:
         for row in csv.DictReader(f):
@@ -127,9 +140,7 @@ def main() -> None:
         json.dump({"correlations": correlations}, f, indent=2)
 
     # Convert None values to null-safe strings for JSON serialization
-    serializable_rows = [
-        {k: v for k, v in r.items()} for r in rows
-    ]
+    serializable_rows = [{k: v for k, v in r.items()} for r in rows]
     with open(OUTPUT_DIR / "all_data.json", "w") as f:
         json.dump(
             {"correlations": correlations, "snapshots": serializable_rows},
@@ -145,20 +156,24 @@ def main() -> None:
     print("-" * len(header))
     for snap in SNAPSHOTS:
         vs = correlations[snap].get("final_win_pct", {})
-        wp  = vs.get("win_pct", {}).get("r2", "—")
-        rd  = vs.get("run_diff_per_game", {}).get("r2", "—")
-        py  = vs.get("pythagorean_pct", {}).get("r2", "—")
-        print(f"{SNAPSHOT_LABELS[snap]:<12}  {str(wp):>8}  {str(rd):>10}  {str(py):>12}")
+        wp = vs.get("win_pct", {}).get("r2", "—")
+        rd = vs.get("run_diff_per_game", {}).get("r2", "—")
+        py = vs.get("pythagorean_pct", {}).get("r2", "—")
+        print(
+            f"{SNAPSHOT_LABELS[snap]:<12}  {str(wp):>8}  {str(rd):>10}  {str(py):>12}"
+        )
 
     print("\n=== R² Summary: Predictor vs Remaining Win % ===\n")
     print(header)
     print("-" * len(header))
     for snap in SNAPSHOTS:
         vs = correlations[snap].get("remaining_win_pct", {})
-        wp  = vs.get("win_pct", {}).get("r2", "—")
-        rd  = vs.get("run_diff_per_game", {}).get("r2", "—")
-        py  = vs.get("pythagorean_pct", {}).get("r2", "—")
-        print(f"{SNAPSHOT_LABELS[snap]:<12}  {str(wp):>8}  {str(rd):>10}  {str(py):>12}")
+        wp = vs.get("win_pct", {}).get("r2", "—")
+        rd = vs.get("run_diff_per_game", {}).get("r2", "—")
+        py = vs.get("pythagorean_pct", {}).get("r2", "—")
+        print(
+            f"{SNAPSHOT_LABELS[snap]:<12}  {str(wp):>8}  {str(rd):>10}  {str(py):>12}"
+        )
 
     print(f"\nOutputs written to {OUTPUT_DIR}/")
 
