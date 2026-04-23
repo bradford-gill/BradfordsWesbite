@@ -2,11 +2,30 @@ import { Link } from "react-router-dom";
 import { Code } from "lucide-react";
 import { useEffect, useState } from "react";
 
+interface BlogPost {
+  title: string;
+  date: string;
+  slug: string;
+  excerpt: string;
+}
+
 export default function Homepage() {
   const [scrollY, setScrollY] = useState(0);
+  const [latestPost, setLatestPost] = useState<BlogPost | null>(null);
 
   useEffect(() => {
     document.title = "Bradford Gill - Home";
+  }, []);
+
+  useEffect(() => {
+    fetch("/blog/posts.json")
+      .then((res) => res.json())
+      .then((data: BlogPost[]) => {
+        if (data.length > 0) {
+          setLatestPost(data[0]);
+        }
+      })
+      .catch((err) => console.error("Error loading latest post:", err));
   }, []);
 
   useEffect(() => {
@@ -39,7 +58,7 @@ export default function Homepage() {
       <div className="relative z-10">
         <div className="max-w-4xl mx-auto px-6 py-16">
           {/* Hero Section */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <div className="mb-6">
               <img
                 src="/home-page-images/profile.png"
@@ -53,6 +72,16 @@ export default function Homepage() {
             <p className="text-xl text-white drop-shadow-md">
               I love computers, businesses, and spending time in nature.
             </p>
+            {latestPost && (
+              <div className="mt-4 mb-1">
+                <Link
+                  to={`/blog/${latestPost.slug}`}
+                  className="block w-full bg-white/20 backdrop-blur-sm text-white border border-white/40 font-medium px-5 py-3 rounded-2xl hover:bg-white/30 transition-colors text-base text-center"
+                >
+                  Latest Post: {latestPost.title}
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* About Section */}
