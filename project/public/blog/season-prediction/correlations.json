@@ -1,0 +1,254 @@
+{
+  "correlations": {
+    "may_1": {
+      "label": "May 1",
+      "n": 750,
+      "final_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.6007,
+          "r2": 0.3608,
+          "rmse": 0.0595,
+          "n": 750
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.6086,
+          "r2": 0.3704,
+          "rmse": 0.059,
+          "n": 750
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.6091,
+          "r2": 0.371,
+          "rmse": 0.059,
+          "n": 750
+        }
+      },
+      "remaining_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.4092,
+          "r2": 0.1674,
+          "rmse": 0.0708,
+          "n": 750
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.4605,
+          "r2": 0.212,
+          "rmse": 0.0689,
+          "n": 750
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.4607,
+          "r2": 0.2122,
+          "rmse": 0.0688,
+          "n": 750
+        }
+      }
+    },
+    "jun_1": {
+      "label": "June 1",
+      "n": 750,
+      "final_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.7572,
+          "r2": 0.5734,
+          "rmse": 0.0486,
+          "n": 750
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.7266,
+          "r2": 0.5279,
+          "rmse": 0.0511,
+          "n": 750
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.7243,
+          "r2": 0.5246,
+          "rmse": 0.0513,
+          "n": 750
+        }
+      },
+      "remaining_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.4815,
+          "r2": 0.2318,
+          "rmse": 0.0727,
+          "n": 750
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.5016,
+          "r2": 0.2516,
+          "rmse": 0.0718,
+          "n": 750
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.499,
+          "r2": 0.249,
+          "rmse": 0.0719,
+          "n": 750
+        }
+      }
+    },
+    "jul_1": {
+      "label": "July 1",
+      "n": 750,
+      "final_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.8503,
+          "r2": 0.723,
+          "rmse": 0.0392,
+          "n": 750
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.8067,
+          "r2": 0.6508,
+          "rmse": 0.044,
+          "n": 750
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.8059,
+          "r2": 0.6495,
+          "rmse": 0.044,
+          "n": 750
+        }
+      },
+      "remaining_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.5154,
+          "r2": 0.2656,
+          "rmse": 0.0781,
+          "n": 750
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.5273,
+          "r2": 0.2781,
+          "rmse": 0.0774,
+          "n": 750
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.5271,
+          "r2": 0.2779,
+          "rmse": 0.0774,
+          "n": 750
+        }
+      }
+    },
+    "aug_1": {
+      "label": "August 1",
+      "n": 780,
+      "final_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.8738,
+          "r2": 0.7635,
+          "rmse": 0.0365,
+          "n": 780
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.847,
+          "r2": 0.7174,
+          "rmse": 0.0399,
+          "n": 780
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.8432,
+          "r2": 0.7109,
+          "rmse": 0.0404,
+          "n": 780
+        }
+      },
+      "remaining_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.5419,
+          "r2": 0.2937,
+          "rmse": 0.0848,
+          "n": 780
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.5634,
+          "r2": 0.3174,
+          "rmse": 0.0834,
+          "n": 780
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.5599,
+          "r2": 0.3135,
+          "rmse": 0.0836,
+          "n": 780
+        }
+      }
+    },
+    "sep_1": {
+      "label": "September 1",
+      "n": 780,
+      "final_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.9652,
+          "r2": 0.9316,
+          "rmse": 0.0197,
+          "n": 780
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.9088,
+          "r2": 0.8258,
+          "rmse": 0.0314,
+          "n": 780
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.9069,
+          "r2": 0.8225,
+          "rmse": 0.0316,
+          "n": 780
+        }
+      },
+      "remaining_win_pct": {
+        "win_pct": {
+          "label": "Win %",
+          "r": 0.4932,
+          "r2": 0.2432,
+          "rmse": 0.1064,
+          "n": 780
+        },
+        "run_diff_per_game": {
+          "label": "Run Diff/G",
+          "r": 0.4849,
+          "r2": 0.2352,
+          "rmse": 0.107,
+          "n": 780
+        },
+        "pythagorean_pct": {
+          "label": "Pythagorean %",
+          "r": 0.4803,
+          "r2": 0.2307,
+          "rmse": 0.1073,
+          "n": 780
+        }
+      }
+    }
+  }
+}

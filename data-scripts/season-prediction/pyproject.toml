@@ -1,0 +1,9 @@
+[project]
+name = "season-prediction"
+version = "0.1.0"
+description = "Correlate MLB mid-season stats with final and remaining win % (2000-2025)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.33.1",
+]
