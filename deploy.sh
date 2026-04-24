@@ -6,7 +6,7 @@
 set -e
 
 SERVER_USER="ubuntu"
-SERVER_HOST="98.89.177.239"
+SERVER_HOST="54.210.244.233"
 SSH_KEY="$HOME/Desktop/LightsailDefaultKey-us-east-1.pem"
 
 echo "Pushing to main..."

@@ -50,6 +50,7 @@ All data analysis lives in `data-scripts/<post-slug>/`. Use Python with `uv`.
   ```
 - Export a default React component
 - Fetch data from `/blog/<slug>/<file>.json` inside the component
+- The root `<div>` of the component **must** use `style={{ fontFamily: "inherit", maxWidth: "100%" }}` — never set a fixed `maxWidth` or `margin: "0 auto"` on it; the `BlogPost` wrapper handles layout
 
 **Markdown post** (for simple text posts):
 
