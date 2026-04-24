@@ -11,5 +11,12 @@
 		path /
 	}
 	header @html Cache-Control "no-cache, no-store, must-revalidate"
+
+	# Blog data files (posts.json, markdown, data JSONs) change on every deploy.
+	# Force revalidation so new posts show up immediately without a hard refresh.
+	@blogData {
+		path /blog/*
+	}
+	header @blogData Cache-Control "no-cache, must-revalidate"
 }
 
