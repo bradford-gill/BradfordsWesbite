@@ -12,6 +12,9 @@ RUN npm ci
 # Copy source code
 COPY project/ ./
 
+# Cap heap so Vite/Rollup doesn't OOM on small instances (e.g. Lightsail)
+ENV NODE_OPTIONS="--max-old-space-size=512"
+
 # Build the app
 RUN npm run build
 
