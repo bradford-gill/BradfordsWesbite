@@ -1,0 +1,8 @@
+# docker compose -f docker-compose.dev.yml up --build
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      DOMAIN: ":80"

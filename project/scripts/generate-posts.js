@@ -10,6 +10,22 @@ const POSTS_DIR = path.join(__dirname, "../src/components/posts");
 const OUTPUT_FILE = path.join(BLOG_DIR, "posts.json");
 
 /**
+ * Strip surrounding YAML quotes from a frontmatter value
+ * @param {string} value
+ * @returns {string}
+ */
+function stripYamlQuotes(value) {
+  const trimmed = value.trim();
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1);
+  }
+  return trimmed;
+}
+
+/**
  * Extract frontmatter from markdown content
  * @param {string} content - The markdown file content
  * @returns {object|null} - Parsed frontmatter object or null if invalid
@@ -32,7 +48,7 @@ function extractFrontmatter(content) {
     if (colonIndex > 0) {
       const key = line.substring(0, colonIndex).trim();
       const value = line.substring(colonIndex + 1).trim();
-      frontmatter[key] = value;
+      frontmatter[key] = stripYamlQuotes(value);
     }
   }
 
