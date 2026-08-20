@@ -58,3 +58,9 @@ Thumbs.db
 tmp/
 temp/
 
+# Data scripts — raw fetched data, processed parquets, caches
+data-scripts/**/data/
+data-scripts/**/__pycache__/
+data-scripts/**/.ipynb_checkpoints/
+data-scripts/**/output/charts/
+
