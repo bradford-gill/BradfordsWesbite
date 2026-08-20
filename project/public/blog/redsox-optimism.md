@@ -1,11 +1,13 @@
 ---
-title: "The 2026 Red Sox: Gotta Enjoy Every Season"
+title: "The 2026 Red Sox: Gotta Enjoy Every Season (Update: They Won)"
 date: "2026-06-22"
 slug: "redsox-optimism"
 excerpt: "The season is not going as planned, but there are still plenty of reasons to tune in."
 ---
 
-# The 2026 Red Sox: Gotta Enjoy Every Season
+# The 2026 Red Sox: Gotta Enjoy Every Season (Update: They Won)
+
+> **Update, August 2026:** I was gladly wrong. After a rough start the Red Sox went on an absolutely unreal run — one of those stretches where everything clicks at once and you remember why you watch baseball. They ended up winning it all. Payton Tolle, the tarps off crowd, Franklin Arias lighting up Double-A — all of it was a preview of something special. Being optimistic was the right call.
 
 The much-anticipated Red Sox season is not going the way many Red Sox fans and baseball analysts thought it would be. Many players are significantly underperforming projections, and our two most prominent young stars, Garrett Crochet and Roman Anthony, are on the IL. Despite all this, for better or worse, I still find myself tuning in. This season is a great reminder that it is almost always better to be optimistic and wrong than pessimistic and correct. I have been trying to focus on the good rather than the team OPS, wOBA, or record. A couple things that have been bringin me joy are the tarps off crowd energy, Payton Tolle, a blue-chip prospect on the way, and Fenway on a sunny day.
 
