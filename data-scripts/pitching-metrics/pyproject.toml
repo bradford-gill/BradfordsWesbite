@@ -1,0 +1,16 @@
+[project]
+name = "pitching-metrics"
+version = "0.1.0"
+description = "Which pitching metric predicts future wOBA best, and at what sample size?"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.26",
+    "pyarrow>=14.0",
+    "requests>=2.33",
+    "matplotlib>=3.8",
+    "plotly>=5.0",
+    "statsmodels>=0.14",
+    "jupyter>=1.0",
+    "tqdm>=4.66",
+]

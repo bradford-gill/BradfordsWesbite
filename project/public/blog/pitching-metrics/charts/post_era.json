@@ -1,0 +1,784 @@
+{
+  "data": [
+    {
+      "hovertemplate": "\u003cb\u003ek_bb_pct\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "k_bb_pct",
+      "line": { "color": "#636EFA", "width": 2 },
+      "mode": "lines",
+      "name": "k_bb_pct",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "SFD8GHPXgj+Sy39Iv31NP\u002fyp8dJNYmA\u002fTfOOU3Qkhz8TYcPTK2VpPwFNhA1Pr4Q\u002fL26jAbwFgj+1pnnHKTqCPwfwFkhQ\u002fIg\u002fWDm0yHa+jz+C4seYu5aQP\u002fXb14FzRoQ\u002f0gDeAgmKjz84+MJkqmCUP+CcEaW9wZc\u002fi2zn+6nxkj\u002f8qfHSTWKQPyuHFtnO95M\u002fi2zn+6nxkj+At0CC4seIP+0NvjCZKog\u002fIv32deCcgT84+MJkqmCUPwrXo3A9Cpc\u002fVcGopE5Akz\u002fF\u002frJ78rCQP4ts5\u002fup8ZI\u002fzojS3uALkz8vbqMBvAWSPxWMSuoENJE\u002feekmMQisjD9TliGOdXGLP0GC4seYu4Y\u002foWez6nO1hT8OvjCZKhiFP7WmeccpOoI\u002fQYLix5i7hj\u002ftDb4wmSqIP5T2Bl+YTIU\u002fNBE2PL1Shj8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003efip\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "fip",
+      "line": { "color": "#EF553B", "width": 2 },
+      "mode": "lines",
+      "name": "fip",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "whcmUwWjkj8JG55eKcuAP40o7Q2+MIk\u002fCRueXinLgD\u002foaiv2l92DPzJVMCqpE5A\u002fnMQgsHJokT9VwaikTkCDP2x4eqUsQ4w\u002f\u002fKnx0k1ikD8tQxzr4jaKP3sUrkfhenQ\u002fWDm0yHa+jz+LbOf7qfGSP74wmSoYlZQ\u002f+MJkqmBUkj+srdhfdk+OP03zjlN0JIc\u002f6Gor9pfdgz956SYxCKx8P67YX3ZPHoY\u002f7Q2+MJkqiD9VwaikTkCTP2EyVTAqqZM\u002fkQ96Nqs+lz9YObTIdr6PP2fV52or9pc\u002fEHo2qz5Xmz8XSFD8GHOXP9v5fmq8dJM\u002fpU5AE2HDkz9R2ht8YTKVP3\u002f7OnDOiJI\u002fnYAmwoanlz8K16NwPQqXPzcawFsgQaE\u002fIv32deCcoT8aUdobfGGiP1D8GHPXEqI\u002fP1dbsb\u002fsnj8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003eera\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "era",
+      "line": { "color": "#00CC96", "width": 2 },
+      "mode": "lines",
+      "name": "era",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "YTJVMCqpYz8tQxzr4jYaPy1DHOviNho\u002f+n5qvHSTaD\u002f8qfHSTWJAP5LLf0i\u002ffU0\u002flPYGX5hMVT8tQxzr4jYaP5T2Bl+YTFU\u002f3nGKjuTybz9hMlUwKqlzPy1DHOviNio\u002fYTJVMCqpUz9fB84ZUdprPzvfT42XbnI\u002frthfdk8edj+Sy39Iv31dP5LLf0i\u002ffU0\u002fYTJVMCqpMz8AAAAAAAAAAPyp8dJNYlA\u002fLUMc6+I2Oj9fB84ZUdpbP8WPMXctIW8\u002fXwfOGVHaaz\u002f8qfHSTWJQPy9uowG8BXI\u002ftaZ5xyk6gj+fPCzUmuZ9P\u002fXb14FzRoQ\u002fMuauJeSDjj\u002foaiv2l92TP4Lix5i7lpA\u002fXkvIBz2blT8VjErqBDSRPy1DHOviNpo\u002fEqW9wRcmkz\u002fZzvdT46WbP+kmMQisHJo\u002fVcGopE5Akz8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ewoba\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "woba",
+      "line": { "color": "#AB63FA", "width": 2 },
+      "mode": "lines",
+      "name": "woba",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "eekmMQisfD8tQxzr4jYqPwAAAAAAAAAAXwfOGVHaez8tQxzr4jZKPyDSb18Hznk\u002f1CtlGeJYdz\u002f6fmq8dJNYP\u002fyp8dJNYlA\u002fSFD8GHPXYj\u002fHuriNBvBmP2EyVTAqqVM\u002flPYGX5hMVT8tQxzr4jYqPwAAAAAAAAAAXwfOGVHaWz8tQxzr4jYaPy1DHOviNho\u002fYTJVMCqpMz8VjErqBDRhP5T2Bl+YTFU\u002fRiV1ApoIaz9IUPwYc9diPy1DHOviNjo\u002fLUMc6+I2Oj9fB84ZUdpbPwAAAAAAAAAALUMc6+I2Gj8tQxzr4jYaPy1DHOviNho\u002fAAAAAAAAAAAtQxzr4jY6Py9uowG8BVI\u002fXwfOGVHaWz\u002f8qfHSTWJAP5LLf0i\u002ffW0\u002fLUMc6+I2Oj\u002fFjzF3LSFfP8e6uI0G8FY\u002f\u002fKnx0k1iQD8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003exwoba\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "xwoba",
+      "line": { "color": "#FFA15A", "width": 2 },
+      "mode": "lines",
+      "name": "xwoba",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "WKg1zTtOoT+u2F92Tx52P5zEILByaIE\u002fL26jAbwFgj9lGeJYF7ehP5eQD3o2q64\u002fp+hILv8hrT+FfNCzWfWpP5Axdy0hH6Q\u002fOdbFbTSApz\u002fgnBGlvcGnP1ioNc07TqE\u002fINJvXwfOqT8dOGdEaW+wP+M2GsBbILE\u002fDeAtkKD4sT94CyQofoypPwfwFkhQ\u002fKg\u002fi2zn+6nxoj9lGeJYF7ehP\u002fmgZ7Pqc6U\u002f8BZIUPwYoz89m1Wfq62oP8x\u002fSL99Hag\u002fPnlYqDXNqz9qvHSTGASmPxB6Nqs+V6s\u002fLUMc6+I2qj+3Yn\u002fZPXmoP5yiI7n8h6Q\u002fsp3vp8ZLpz\u002fSAN4CCYqvPzLmriXkg64\u002f1edqK\u002faXrT9oke18PzWuPwBvgQTFj7E\u002fRIts5\u002fupsT\u002fjpZvEILCyP2UZ4lgXt7E\u002f\u002fKnx0k1isD8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003esiera\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "siera",
+      "line": { "color": "#19D3F3", "width": 2 },
+      "mode": "lines",
+      "name": "siera",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "P1dbsb\u002fsjj92cRsN4C2APy9uowG8BYI\u002fVcGopE5Akz\u002f6fmq8dJN4Pz9XW7G\u002f7I4\u002fU5YhjnVxiz8tQxzr4jaKP2UZ4lgXt5E\u002f5IOezarPlT9BguLHmLuWP9nO91PjpYs\u002fsb\u002fsnjwslD\u002fHuriNBvCWP8PTK2UZ4pg\u002f6Gor9pfdkz+PU3Qkl\u002f+QP\u002fXb14FzRpQ\u002fIv32deCckT8OvjCZKhiFP1pkO99PjYc\u002fqDXNO07RgT++MJkqGJWUPxdIUPwYc5c\u002fEqW9wRcmkz8i\u002ffZ14JyRP3sUrkfhepQ\u002frthfdk8elj+IhVrTvOOUP26jAbwFEpQ\u002f7FG4HoXrkT8VjErqBDSRP9nO91PjpYs\u002f\u002fyH99nXgjD\u002f\u002fIf32deCMP8Dsnjws1Io\u002fdnEbDeAtkD8JG55eKcuQPwyTqYJRSY0\u002frK3YX3ZPjj8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ek9\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "k9",
+      "line": { "color": "#FF6692", "width": 2 },
+      "mode": "lines",
+      "name": "k9",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "exSuR+F6ZD8i\u002ffZ14JxxP7pJDAIrh3Y\u002fkst\u002fSL99nT8VjErqBDRhP3sUrkfhemQ\u002frthfdk8edj8VjErqBDSBP2fV52or9oc\u002fTfOOU3Qkhz+ze\u002fKwUGuKPwFNhA1Pr4Q\u002fx7q4jQbwhj9YObTIdr6PP3ZxGw3gLZA\u002fNBE2PL1Shj\u002fb+X5qvHSDP9v5fmq8dIM\u002frthfdk8ehj9hMlUwKqlzP5LLf0i\u002ffW0\u002fLUMc6+I2aj\u002fb+X5qvHSDP3ZxGw3gLYA\u002fU5YhjnVxez\u002f6fmq8dJN4P18HzhlR2ns\u002f4JwRpb3Bdz+U9gZfmEx1PxWMSuoENHE\u002flPYGX5hMZT9IUPwYc9diP5T2Bl+YTFU\u002fLUMc6+I2Kj9hMlUwKqlDPy1DHOviNjo\u002fLUMc6+I2Wj+Sy39Iv31dP\u002fyp8dJNYmA\u002fexSuR+F6ZD8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ebb9\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "bb9",
+      "line": { "color": "#B6E880", "width": 2 },
+      "mode": "lines",
+      "name": "bb9",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "bqMBvAUSdD\u002f6fmq8dJNoPwAAAAAAAAAALUMc6+I2Kj8vbqMBvAVyP03zjlN0JIc\u002fiIVa07zjdD9fB84ZUdpbP\u002fp+arx0k1g\u002fO99PjZducj9hMlUwKqlTPwAAAAAAAAAAexSuR+F6ZD8VjErqBDRxP1OWIY51cXs\u002fx7q4jQbwdj+u2F92Tx52P26jAbwFEoQ\u002fqDXNO07RgT+ze\u002fKwUGuKPz9XW7G\u002f7I4\u002flPYGX5hMhT\u002fA7J48LNSKPxNhw9MrZZk\u002fvjCZKhiVlD8JG55eKcuQPyL99nXgnJE\u002fDr4wmSoYlT8BTYQNT6+UPx4Wak3zjpM\u002fRGlv8IXJlD\u002fXEvJBz2aVPwFNhA1Pr5Q\u002fVOOlm8QgoD+vlGWIY12cP4SezarP1ZY\u002f2\u002fl+arx0kz+xv+yePCyUP5LLf0i\u002ffY0\u002fhlrTvOMUjT8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ewhip\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "whip",
+      "line": { "color": "#FF97FF", "width": 2 },
+      "mode": "lines",
+      "name": "whip",
+      "showlegend": true,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwBNgFAAUoBVAFeAWgBcgF8AYYBkAE="
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "\u002fKnx0k1iQD8OvjCZKhiFP95xio7k8n8\u002fxf6ye\u002fKwkD8tQxzr4jYqPxWMSuoENIE\u002f4JwRpb3Bdz\u002f8qfHSTWJgP\u002fyp8dJNYlA\u002fLUMc6+I2aj8JG55eKctwPy9uowG8BVI\u002f\u002fKnx0k1iYD9hMlUwKqlTP8e6uI0G8FY\u002f3nGKjuTybz8tQxzr4jZKP5T2Bl+YTFU\u002fYTJVMCqpQz8AAAAAAAAAAAAAAAAAAAAAxY8xdy0hXz8tQxzr4jYaP2EyVTAqqVM\u002fYTJVMCqpMz8tQxzr4jYaP2EyVTAqqVM\u002f\u002fKnx0k1iUD8vbqMBvAVSP2EyVTAqqWM\u002fXwfOGVHaaz\u002fecYqO5PJvP5T2Bl+YTHU\u002fqDXNO07RgT8TYcPTK2V5P7gehetRuH4\u002fxY8xdy0hbz\u002fHuriNBvB2P8WPMXctIW8\u002fXwfOGVHaaz8="
+      },
+      "type": "scatter",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ek_bb_pct\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "k_bb_pct",
+      "line": { "color": "#636EFA", "width": 2 },
+      "mode": "lines",
+      "name": "k_bb_pct",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "LUMc6+I2Gj\u002fHuriNBvBmPy1DHOviNho\u002f+n5qvHSTWD+Sy39Iv31NP5LLf0i\u002ffX0\u002fYTJVMCqpcz+U9gZfmExlP8e6uI0G8IY\u002fj1N0JJf\u002fgD\u002fgnBGlvcFnP8WPMXctIX8\u002fx7q4jQbwhj+Sy39Iv32NPzvfT42XboI\u002fexSuR+F6hD8i\u002ffZ14JyRPxWMSuoENJE\u002fCRueXinLkD+fPCzUmuaNP+CcEaW9wZc\u002fTDeJQWDlkD8IPZtVn6u9P18pyxDHurg\u002fejarPldbsT\u002fUK2UZ4liXP3ZxGw3gLZA\u002fF0hQ\u002fBhzlz+1FfvL7snDP6foSC7\u002fIb0\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003efip\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "fip",
+      "line": { "color": "#EF553B", "width": 2 },
+      "mode": "lines",
+      "name": "fip",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "LUMc6+I2Kj8tQxzr4jY6P3sUrkfhenQ\u002fCRueXinLgD\u002fSAN4CCYp\u002fP0Rpb\u002fCFyZQ\u002ft2J\u002f2T15mD+At0CC4seYP03zjlN0JJc\u002fF0hQ\u002fBhzlz+At0CC4seIP6g1zTtO0ZE\u002fNBE2PL1Slj+9UpYhjnWhP9IA3gIJip8\u002fkQ96Nqs+lz\u002fecYqO5PKfP1XBqKROQKM\u002fYTJVMCqpoz+pE9BE2PCkPzQRNjy9UqY\u002fhJ7Nqs\u002fVpj8LtaZ5xymqP1TjpZvEIKA\u002fFYxK6gQ0YT\u002fnjCjtDb6gP8Dsnjws1Ko\u002feekmMQisnD+28\u002f3UeOm2P+C+DpwzorQ\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003eera\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "era",
+      "line": { "color": "#00CC96", "width": 2 },
+      "mode": "lines",
+      "name": "era",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "LUMc6+I2Kj8AAAAAAAAAAAAAAAAAAAAAYTJVMCqpMz8tQxzr4jZKP3KKjuTyH5I\u002fx7q4jQbwhj+cxCCwcmiBP8xdS8gHPYs\u002fB\u002fAWSFD8mD8Mk6mCUUmNP3RGlPYGX4g\u002f6Gor9pfdgz+mCkYldQKKP8X+snvysJA\u002fGQRWDi2yjT9uowG8BRKEP2EyVTAqqYM\u002fLUMc6+I2ij8DCYofY+6aP8Dsnjws1Jo\u002fwOyePCzUij85tMh2vp96P3npJjEIrGw\u002fFYxK6gQ0YT\u002fHuriNBvBGPwFNhA1Pr5Q\u002f2\u002fl+arx0kz8\u002fNV66SQyyP4Lix5i7lrA\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ewoba\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "woba",
+      "line": { "color": "#AB63FA", "width": 2 },
+      "mode": "lines",
+      "name": "woba",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "AAAAAAAAAAAtQxzr4jY6Py1DHOviNjo\u002f\u002fKnx0k1iQD8AAAAAAAAAAPp+arx0k2g\u002fXwfOGVHaWz8VjErqBDRhP2EyVTAqqUM\u002f\u002fKnx0k1iQD8AAAAAAAAAAC1DHOviNio\u002fYTJVMCqpMz8tQxzr4jYaPy1DHOviNko\u002flPYGX5hMVT8tQxzr4jZKPy1DHOviNho\u002fLUMc6+I2Kj8AAAAAAAAAAC1DHOviNio\u002fkst\u002fSL99TT8tQxzr4jZaP2EyVTAqqXM\u002fFYxK6gQ0oT\u002fgnBGlvcFnPy1DHOviNio\u002f8rBQa5p3jD8ZBFYOLbKNPxWMSuoENKE\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003exwoba\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "xwoba",
+      "line": { "color": "#FFA15A", "width": 2 },
+      "mode": "lines",
+      "name": "xwoba",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "AAAAAAAAAABIUPwYc9eCP2EyVTAqqXM\u002fguLHmLuWgD\u002ftDb4wmSp4P95xio7k8o8\u002f\u002fKnx0k1ikD\u002fMXUvIBz2LP9QrZRniWIc\u002fZ9Xnaiv2hz9MN4lBYOWQPz9XW7G\u002f7I4\u002fBTQRNjy9kj8eFmpN846TP7WmeccpOoI\u002fxY8xdy0hfz\u002ftDb4wmSqIP8WPMXctIY8\u002fS8gHPZtVjz\u002fysFBrmneMP5qZmZmZmYk\u002fS8gHPZtVjz+vlGWIY12cP\u002f8h\u002ffZ14Iw\u002fYTJVMCqpMz8g0m9fB855PxWMSuoENGE\u002fx7q4jQbwVj92cRsN4C2APzm0yHa+n3o\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003esiera\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "siera",
+      "line": { "color": "#19D3F3", "width": 2 },
+      "mode": "lines",
+      "name": "siera",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "kst\u002fSL99TT9fB84ZUdpbPy1DHOviNjo\u002fexSuR+F6ZD+Sy39Iv31NP6Fns+pztYU\u002frK3YX3ZPfj8H8BZIUPx4P2UZ4lgXt5E\u002f0gDeAgmKjz8H8BZIUPx4Pzm0yHa+n4o\u002fFYxK6gQ0kT\u002f129eBc0aUP7pJDAIrh4Y\u002fObTIdr6fij9BguLHmLuWP1Z9rrZif5k\u002f\u002fmX35GGhlj\u002fgnBGlvcGXP9c07zhFR6I\u002fVOOlm8QgoD+Y3ZOHhVrDP34dOGdEab8\u002fSnuDL0ymuj+Ens2qz9W2P+AtkKD4MbY\u002fj8L1KFyPwj\u002fecYqO5PLPP4EmwoanV8o\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ek9\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "k9",
+      "line": { "color": "#FF6692", "width": 2 },
+      "mode": "lines",
+      "name": "k9",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "XwfOGVHaez8VjErqBDSRP+0NvjCZKng\u002fexSuR+F6hD8BTYQNT6+EP+xRuB6F65E\u002f5j+k374OjD8g0m9fB86JP18HzhlR2ps\u002fgLdAguLHmD\u002fFjzF3LSGPP7G\u002f7J48LJQ\u002fSgwCK4cWmT+mCkYldQKaP8uhRbbz\u002fZQ\u002fukkMAiuHlj9aZDvfT42XPzQRNjy9UpY\u002fDr4wmSoYlT\u002fOiNLe4AuTP1OWIY51cZs\u002fcoqO5PIfkj+k374OnDOyPxdIUPwYc6c\u002f5j+k374OnD\u002f2l92Th4WaP4C3QILix4g\u002fMuauJeSDjj+neccpOpK7PwWjkjoBTbQ\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ebb9\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "bb9",
+      "line": { "color": "#B6E880", "width": 2 },
+      "mode": "lines",
+      "name": "bb9",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "1CtlGeJYdz\u002fHuriNBvBWP2EyVTAqqVM\u002f\u002fKnx0k1iUD9hMlUwKqlDPy1DHOviNho\u002fYTJVMCqpQz8VjErqBDRhPy9uowG8BWI\u002fRiV1ApoIaz\u002fFjzF3LSFvPy1DHOviNko\u002fLUMc6+I2Oj9hMlUwKqkzPy1DHOviNjo\u002f\u002fKnx0k1iQD+Sy39Iv31NP2EyVTAqqVM\u002f+n5qvHSTWD+U9gZfmExVPy1DHOviNko\u002fkst\u002fSL99bT9seHqlLEOMPzAqqRPQRJg\u002fJ6CJsOHplT\u002f8qfHSTWJAP5LLf0i\u002ffV0\u002fXwfOGVHaaz8g0m9fB855P2EyVTAqqYM\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    },
+    {
+      "hovertemplate": "\u003cb\u003ewhip\u003c\u002fb\u003e\u003cbr\u003eW=%{x} PA\u003cbr\u003eR\u00b2=%{y:.4f}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "legendgroup": "whip",
+      "line": { "color": "#FF97FF", "width": 2 },
+      "mode": "lines",
+      "name": "whip",
+      "showlegend": false,
+      "x": {
+        "dtype": "i2",
+        "bdata": "CgAUAB4AKAAyADwARgBQAFoAZABuAHgAggCMAJYAoACqALQAvgDIANIA3ADmAPAA+gAEAQ4BGAEiASwB"
+      },
+      "y": {
+        "dtype": "f8",
+        "bdata": "AAAAAAAAAACU9gZfmExVP6Fns+pztXU\u002f\u002fKnx0k1iYD9GJXUCmghrPwAAAAAAAAAALUMc6+I2Kj9hMlUwKqlDP\u002fp+arx0k1g\u002f4JwRpb3BZz\u002fSAN4CCYp\u002fP0hQ\u002fBhz14I\u002fnMQgsHJogT9TliGOdXF7P\u002fXb14FzRoQ\u002fzojS3uALgz\u002f6fmq8dJNoP2EyVTAqqWM\u002frthfdk8eZj+Sy39Iv31dP67YX3ZPHmY\u002fSFD8GHPXcj\u002f8qfHSTWJAPy1DHOviNio\u002fL26jAbwFgj9R2ht8YTKVP5LLf0i\u002ffX0\u002fHhZqTfOOkz+u2F92Tx5mP8PTK2UZ4pg\u002f"
+      },
+      "type": "scatter",
+      "xaxis": "x2",
+      "yaxis": "y2"
+    }
+  ],
+  "layout": {
+    "template": {
+      "data": {
+        "histogram2dcontour": [
+          {
+            "type": "histogram2dcontour",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "choropleth": [
+          {
+            "type": "choropleth",
+            "colorbar": { "outlinewidth": 0, "ticks": "" }
+          }
+        ],
+        "histogram2d": [
+          {
+            "type": "histogram2d",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "heatmap": [
+          {
+            "type": "heatmap",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "contourcarpet": [
+          {
+            "type": "contourcarpet",
+            "colorbar": { "outlinewidth": 0, "ticks": "" }
+          }
+        ],
+        "contour": [
+          {
+            "type": "contour",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "surface": [
+          {
+            "type": "surface",
+            "colorbar": { "outlinewidth": 0, "ticks": "" },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "mesh3d": [
+          { "type": "mesh3d", "colorbar": { "outlinewidth": 0, "ticks": "" } }
+        ],
+        "scatter": [
+          {
+            "fillpattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+            },
+            "type": "scatter"
+          }
+        ],
+        "parcoords": [
+          {
+            "type": "parcoords",
+            "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatterpolargl": [
+          {
+            "type": "scatterpolargl",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "bar": [
+          {
+            "error_x": { "color": "#2a3f5f" },
+            "error_y": { "color": "#2a3f5f" },
+            "marker": {
+              "line": { "color": "#E5ECF6", "width": 0.5 },
+              "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }
+            },
+            "type": "bar"
+          }
+        ],
+        "scattergeo": [
+          {
+            "type": "scattergeo",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatterpolar": [
+          {
+            "type": "scatterpolar",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "histogram": [
+          {
+            "marker": {
+              "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }
+            },
+            "type": "histogram"
+          }
+        ],
+        "scattergl": [
+          {
+            "type": "scattergl",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatter3d": [
+          {
+            "type": "scatter3d",
+            "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } },
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scattermap": [
+          {
+            "type": "scattermap",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scattermapbox": [
+          {
+            "type": "scattermapbox",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scatterternary": [
+          {
+            "type": "scatterternary",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "scattercarpet": [
+          {
+            "type": "scattercarpet",
+            "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } }
+          }
+        ],
+        "carpet": [
+          {
+            "aaxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "baxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "type": "carpet"
+          }
+        ],
+        "table": [
+          {
+            "cells": {
+              "fill": { "color": "#EBF0F8" },
+              "line": { "color": "white" }
+            },
+            "header": {
+              "fill": { "color": "#C8D4E3" },
+              "line": { "color": "white" }
+            },
+            "type": "table"
+          }
+        ],
+        "barpolar": [
+          {
+            "marker": {
+              "line": { "color": "#E5ECF6", "width": 0.5 },
+              "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }
+            },
+            "type": "barpolar"
+          }
+        ],
+        "pie": [{ "automargin": true, "type": "pie" }]
+      },
+      "layout": {
+        "autotypenumbers": "strict",
+        "colorway": [
+          "#636efa",
+          "#EF553B",
+          "#00cc96",
+          "#ab63fa",
+          "#FFA15A",
+          "#19d3f3",
+          "#FF6692",
+          "#B6E880",
+          "#FF97FF",
+          "#FECB52"
+        ],
+        "font": { "color": "#2a3f5f" },
+        "hovermode": "closest",
+        "hoverlabel": { "align": "left" },
+        "paper_bgcolor": "white",
+        "plot_bgcolor": "#E5ECF6",
+        "polar": {
+          "bgcolor": "#E5ECF6",
+          "angularaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "radialaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          }
+        },
+        "ternary": {
+          "bgcolor": "#E5ECF6",
+          "aaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" },
+          "baxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" },
+          "caxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }
+        },
+        "coloraxis": { "colorbar": { "outlinewidth": 0, "ticks": "" } },
+        "colorscale": {
+          "sequential": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "sequentialminus": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "diverging": [
+            [0, "#8e0152"],
+            [0.1, "#c51b7d"],
+            [0.2, "#de77ae"],
+            [0.3, "#f1b6da"],
+            [0.4, "#fde0ef"],
+            [0.5, "#f7f7f7"],
+            [0.6, "#e6f5d0"],
+            [0.7, "#b8e186"],
+            [0.8, "#7fbc41"],
+            [0.9, "#4d9221"],
+            [1, "#276419"]
+          ]
+        },
+        "xaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": { "standoff": 15 },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "yaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": { "standoff": 15 },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "scene": {
+          "xaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "yaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "zaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          }
+        },
+        "shapedefaults": { "line": { "color": "#2a3f5f" } },
+        "annotationdefaults": {
+          "arrowcolor": "#2a3f5f",
+          "arrowhead": 0,
+          "arrowwidth": 1
+        },
+        "geo": {
+          "bgcolor": "white",
+          "landcolor": "#E5ECF6",
+          "subunitcolor": "white",
+          "showland": true,
+          "showlakes": true,
+          "lakecolor": "white"
+        },
+        "title": { "x": 0.05 },
+        "mapbox": { "style": "light" }
+      }
+    },
+    "xaxis": {
+      "anchor": "y",
+      "domain": [0.0, 0.46],
+      "title": { "text": "Trailing PA window" }
+    },
+    "yaxis": {
+      "anchor": "x",
+      "domain": [0.0, 1.0],
+      "title": { "text": "R\u00b2" },
+      "rangemode": "tozero"
+    },
+    "xaxis2": {
+      "anchor": "y2",
+      "domain": [0.54, 1.0],
+      "title": { "text": "Trailing PA window" }
+    },
+    "yaxis2": {
+      "anchor": "x2",
+      "domain": [0.0, 1.0],
+      "matches": "y",
+      "showticklabels": false,
+      "title": { "text": "R\u00b2" },
+      "rangemode": "tozero"
+    },
+    "annotations": [
+      {
+        "font": { "size": 16 },
+        "showarrow": false,
+        "text": "Starters (SP)",
+        "x": 0.23,
+        "xanchor": "center",
+        "xref": "paper",
+        "y": 1.0,
+        "yanchor": "bottom",
+        "yref": "paper"
+      },
+      {
+        "font": { "size": 16 },
+        "showarrow": false,
+        "text": "Relievers (RP)",
+        "x": 0.77,
+        "xanchor": "center",
+        "xref": "paper",
+        "y": 1.0,
+        "yanchor": "bottom",
+        "yref": "paper"
+      }
+    ],
+    "title": {
+      "text": "Postseason ERA. R\u00b2 of trailing regular-season metric (2021-2025)"
+    },
+    "height": 420,
+    "legend": { "title": { "text": "Metric" } }
+  }
+}
